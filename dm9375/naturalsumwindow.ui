@@ -89,6 +89,32 @@
      <string>Предыдущий результат:</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="replace_known_1">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>30</y>
+      <width>261</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Вставить предыдыдущий результат</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="replace_known_2">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>60</y>
+      <width>261</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Вставить предыдущий результат</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

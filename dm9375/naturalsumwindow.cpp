@@ -28,6 +28,17 @@ void NaturalSumWindow::on_result_clicked()
     BigNatural BigN1(natural1);
     BigNatural BigN2(natural2);
     QString sum = QString::fromStdString(ADD_NN_N(BigN1,BigN2).ToString());
+    globalNumber.set_bignatural(sum);
     ui->result_out->setText(sum);
 }
 
+
+void NaturalSumWindow::on_replace_known_1_clicked()
+{
+    ui->natural1->setText(globalNumber.get_bignatural());
+}
+
+void NaturalSumWindow::on_replace_known_2_clicked()
+{
+    ui->natural2->setText(globalNumber.get_bignatural());
+}
