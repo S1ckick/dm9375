@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "naturalmainwindow.h"
+#include "integermainwindow.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -18,8 +19,11 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     NaturalMainWindow *naturalWindow;
+    IntegerMainWindow *integerWindow;
 };
 #endif // MAINWINDOW_H
