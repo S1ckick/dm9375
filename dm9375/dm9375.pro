@@ -21,14 +21,20 @@ SOURCES += \
     Polynom.cpp \
     RationalFraction.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    naturalmainwindow.cpp \
+    naturalsumwindow.cpp
 
 HEADERS += \
     header.h \
-    mainwindow.h
+    mainwindow.h \
+    naturalmainwindow.h \
+    naturalsumwindow.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    naturalmainwindow.ui \
+    naturalsumwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
