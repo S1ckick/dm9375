@@ -1,6 +1,7 @@
 #include "naturalsumwindow.h"
 #include "ui_naturalsumwindow.h"
 
+
 NaturalSumWindow::NaturalSumWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::NaturalSumWindow)
