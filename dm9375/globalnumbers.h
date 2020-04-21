@@ -9,9 +9,12 @@ public:
     ~globalNumbers();
     void set_bignatural(const QString &bignatural);
     QString get_bignatural();
+    void set_biginteger(const QString &biginteger);
+    QString get_biginteger();
 
 private:
     QString bign;
+    QString bigi;
 
 };
 extern globalNumbers globalNumber;

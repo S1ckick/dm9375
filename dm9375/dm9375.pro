@@ -21,6 +21,8 @@ SOURCES += \
     Polynom.cpp \
     RationalFraction.cpp \
     globalnumbers.cpp \
+    integermainwindow.cpp \
+    integersumwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     naturalmainwindow.cpp \
@@ -29,11 +31,15 @@ SOURCES += \
 HEADERS += \
     globalnumbers.h \
     header.h \
+    integermainwindow.h \
+    integersumwindow.h \
     mainwindow.h \
     naturalmainwindow.h \
     naturalsumwindow.h
 
 FORMS += \
+    integermainwindow.ui \
+    integersumwindow.ui \
     mainwindow.ui \
     naturalmainwindow.ui \
     naturalsumwindow.ui

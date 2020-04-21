@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     naturalWindow = new NaturalMainWindow();
     connect(naturalWindow, &NaturalMainWindow::firstWindow, this, &MainWindow::show);
+    integerWindow = new IntegerMainWindow();
+    connect(integerWindow, &IntegerMainWindow::firstWindow, this, &MainWindow::show);
 }
 
 MainWindow::~MainWindow()
@@ -23,3 +25,9 @@ void MainWindow::on_pushButton_clicked()
 
 
 
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    integerWindow->show();
+    this->close();
+}
