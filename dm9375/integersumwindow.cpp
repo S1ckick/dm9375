@@ -21,7 +21,7 @@ void IntegerSumWindow::on_back_clicked()
     emit firstWindow();
 }
 
-void IntegerSumWindow::on_result_clicked()
-{
+//void IntegerSumWindow::on_result_clicked()
+//{
 
-}
+//}
