@@ -121,26 +121,18 @@ BigNatural TRANS_Z_N(BigInteger b)
 }
 
 //Гладилин Сергей 9375
-BigInteger ADD_ZZ_Z(BigInteger first, BigInteger second)
+BigInteger ADD_ZZ_Z (BigInteger num1, BigInteger num2)
 {
-    BigInteger result;
-    result.sign = first.sign;
-    if (first.sign == second.sign)
-        result.number = ADD_NN_N(ABS_Z_N(first), ABS_Z_N(second));
+    if (num1.sign == num2.sign)
+        num1.number = ADD_NN_N(num1.number, num2.number);
+    else if (COM_NN_D(num1.number, num2.number) == 2)
+        num1.number = SUB_NN_N(num1.number, num2.number);
     else
     {
-        if (COM_NN_D(ABS_Z_N(first), ABS_Z_N(second)) == 2)
-            result.number = SUB_NN_N(ABS_Z_N(first), ABS_Z_N(second));
-        else
-        {
-            result.number = SUB_NN_N(ABS_Z_N(second), ABS_Z_N(first));
-            if (!NZER_N_B(result.number))
-                result.sign = plus_sign;
-            else
-                result = MUL_ZM_Z(result);
-        }
+        num1.number = SUB_NN_N(num2.number, num1.number);
+        num1.sign = num2.sign;
     }
-    return result;
+    return num1;
 }
 
 //Гладилин Сергей 9375
