@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-
+#include "globalnumbers.h"
 typedef std::vector<std::pair<std::string, std::string>> poly;
 // BigNatural
 /*******************************************************************/

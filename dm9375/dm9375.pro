@@ -20,12 +20,14 @@ SOURCES += \
     BigNatural.cpp \
     Polynom.cpp \
     RationalFraction.cpp \
+    globalnumbers.cpp \
     main.cpp \
     mainwindow.cpp \
     naturalmainwindow.cpp \
     naturalsumwindow.cpp
 
 HEADERS += \
+    globalnumbers.h \
     header.h \
     mainwindow.h \
     naturalmainwindow.h \
