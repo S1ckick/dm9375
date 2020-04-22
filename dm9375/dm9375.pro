@@ -29,7 +29,8 @@ SOURCES += \
     naturalsumwindow.cpp \
     polynommainwindow.cpp \
     polynomonewindow.cpp \
-    polynomsumwindow.cpp
+    polynomsumwindow.cpp \
+    rationalmainwindow.cpp
 
 HEADERS += \
     globalnumbers.h \
@@ -41,7 +42,8 @@ HEADERS += \
     naturalsumwindow.h \
     polynommainwindow.h \
     polynomonewindow.h \
-    polynomsumwindow.h
+    polynomsumwindow.h \
+    rationalmainwindow.h
 
 FORMS += \
     integermainwindow.ui \
@@ -51,7 +53,8 @@ FORMS += \
     naturalsumwindow.ui \
     polynommainwindow.ui \
     polynomonewindow.ui \
-    polynomsumwindow.ui
+    polynomsumwindow.ui \
+    rationalmainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

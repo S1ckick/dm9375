@@ -1,9 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     naturalWindow = new NaturalMainWindow();
@@ -12,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(integerWindow, &IntegerMainWindow::firstWindow, this, &MainWindow::show);
     polynomWindow = new PolynomMainWindow();
     connect(polynomWindow, &PolynomMainWindow::firstWindow, this, &MainWindow::show);
+    rationalWindow = new RationalMainWindow();
+    connect(rationalWindow, &RationalMainWindow::firstWindow, this, &MainWindow::show);
 }
 
 MainWindow::~MainWindow()
@@ -35,5 +35,10 @@ void MainWindow::on_pushButton_3_clicked()
 {
     polynomWindow->show();
     this->close();
+}
 
+void MainWindow::on_pushButton_4_clicked()
+{
+    rationalWindow->show();
+    this->close();
 }

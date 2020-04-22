@@ -2,7 +2,8 @@
 #define INTEGERSUM_H
 
 #include <QMainWindow>
-namespace Ui {
+namespace Ui
+{
 class IntegerSumWindow;
 }
 
@@ -10,17 +11,17 @@ class IntegerSumWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
+  public:
     explicit IntegerSumWindow(QWidget *parent = nullptr);
     ~IntegerSumWindow();
-signals:
+  signals:
     void firstWindow();
-private slots:
+  private slots:
     void on_back_clicked();
 
     void on_result_clicked();
 
-private:
+  private:
     Ui::IntegerSumWindow *ui;
 };
 

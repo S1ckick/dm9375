@@ -124,9 +124,35 @@ RationalFraction DIV_QQ_Q(RationalFraction first, RationalFraction second)
         return result;
     result.numenator = MUL_ZZ_Z(first.numenator, TRANS_N_Z(second.denominator));
     result.denominator = MUL_NN_N(first.denominator, TRANS_Z_N(second.numenator));
-    result.numenator.sign = (first.numenator.sign == second.numenator.sign) ? plus_sign : minus_sign;
+    result.numenator.sign =
+        (first.numenator.sign == second.numenator.sign) ? plus_sign : minus_sign;
 
     result = RED_Q_Q(result);
 
     return result;
+}
+/**********************************************************************************************/
+RationalFraction read_frac(std::string rational_str)
+{
+    unsigned long int i = 0;
+    std::string numenator;
+    std::string denominator;
+    while (rational_str[i] != '/')
+    {
+        numenator += rational_str[i];
+        i++;
+    }
+    i++;
+    while (i < rational_str.size())
+    {
+        denominator+=rational_str[i];
+        i++;
+    }
+    RationalFraction rational(numenator,denominator);
+    return rational;
+}
+
+std::string write_frac(RationalFraction rational)
+{
+    return rational.numenator.ToString()+"/"+rational.denominator.ToString();
 }

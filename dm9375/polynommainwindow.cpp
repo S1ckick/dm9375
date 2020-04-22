@@ -1,9 +1,8 @@
 #include "polynommainwindow.h"
 #include "ui_polynommainwindow.h"
 
-PolynomMainWindow::PolynomMainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::PolynomMainWindow)
+PolynomMainWindow::PolynomMainWindow(QWidget *parent)
+    : QMainWindow(parent), ui(new Ui::PolynomMainWindow)
 {
     ui->setupUi(this);
     polynomSum = new PolynomSumWindow();
@@ -26,7 +25,6 @@ void PolynomMainWindow::on_sum_clicked()
     polynomSum->show();
     this->close();
 }
-
 
 void PolynomMainWindow::on_pushButton_clicked()
 {

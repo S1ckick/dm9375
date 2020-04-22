@@ -1,9 +1,8 @@
 #include "integermainwindow.h"
 #include "ui_integermainwindow.h"
 
-IntegerMainWindow::IntegerMainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::IntegerMainWindow)
+IntegerMainWindow::IntegerMainWindow(QWidget *parent)
+    : QMainWindow(parent), ui(new Ui::IntegerMainWindow)
 {
     ui->setupUi(this);
     integerSum = new IntegerSumWindow();

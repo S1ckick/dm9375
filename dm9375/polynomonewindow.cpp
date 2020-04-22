@@ -1,16 +1,17 @@
 #include "polynomonewindow.h"
 #include "ui_polynomonewindow.h"
 #include "header.h"
-
-PolynomOneWindow::PolynomOneWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::PolynomOneWindow)
+#include <QRegExpValidator>
+PolynomOneWindow::PolynomOneWindow(QWidget *parent)
+    : QMainWindow(parent), ui(new Ui::PolynomOneWindow)
 {
     ui->setupUi(this);
     ui->comboBox->addItem("Производная");
     ui->comboBox->addItem("Простые");
     ui->comboBox->addItem("Старший коэфф.");
     ui->comboBox->addItem("Степень");
+    QValidator *validator = new QRegExpValidator(QRegExp("([+-]\\d+\\/\\d+x\\^\\d+)+"));
+    ui->polynom->setValidator(validator);
 }
 
 PolynomOneWindow::~PolynomOneWindow()
@@ -26,6 +27,9 @@ void PolynomOneWindow::on_back_clicked()
 
 void PolynomOneWindow::on_result_clicked()
 {
+    if (ui->polynom->hasAcceptableInput())
+    {
+        ui->warning->clear();
         std::string polynom = ui->polynom->text().toStdString();
         Polynom poli = read_pol(polynom);
         if (ui->comboBox->currentText() == "Производная")
@@ -43,7 +47,7 @@ void PolynomOneWindow::on_result_clicked()
             RationalFraction poli_out = LED_P_Q(poli);
             QString numenator = QString::fromStdString(poli_out.numenator.ToString());
             QString denominator = QString::fromStdString(poli_out.denominator.ToString());
-            QString str = numenator+'/'+denominator;
+            QString str = numenator + '/' + denominator;
             ui->result_out->setText(str);
         }
         else if (ui->comboBox->currentText() == "Степень")
@@ -51,4 +55,9 @@ void PolynomOneWindow::on_result_clicked()
             unsigned int degree = DEG_P_N(poli);
             ui->result_out->setText(QString::number(degree));
         }
+    }
+    else
+    {
+        ui->warning->setText("Вы не до конца заполнили поля.");
+    }
 }

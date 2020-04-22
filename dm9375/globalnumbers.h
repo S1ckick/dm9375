@@ -4,18 +4,20 @@
 
 class globalNumbers
 {
-public:
+  public:
     explicit globalNumbers();
     ~globalNumbers();
     void set_bignatural(const QString &bignatural);
     QString get_bignatural();
     void set_biginteger(const QString &biginteger);
     QString get_biginteger();
+    void set_rational(const QString &rat);
+    QString get_rational();
 
-private:
+  private:
     QString bign;
     QString bigi;
-
+    QString rational;
 };
 extern globalNumbers globalNumber;
 #endif // GLOBALNUMBERS_H
