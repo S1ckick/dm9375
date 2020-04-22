@@ -84,18 +84,31 @@ void PolynomSumWindow::on_result_clicked()
             Polynom poli_out = MOD_PP_P(poli1,poli2);
             ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
         }
+        else if(ui->comboBox->currentText() == "НОД")
+        {
+            Polynom poli_out = GCF_PP_P(poli1,poli2);
+            ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
+        }
     }
     else
     {
         std::string polynom_str = ui->input1->text().toStdString();
-        std::string rational_str = ui->input2->text().toStdString();
         Polynom poli1=read_pol(polynom_str);
-        RationalFraction rational = read_frac(rational_str);
         if(ui->comboBox->currentText() == "Умножение на число")
         {
+            std::string rational_str = ui->input2->text().toStdString();
+            RationalFraction rational = read_frac(rational_str);
             Polynom poli = MUL_PQ_P(poli1,rational);
             ui->result_out->setText(QString::fromStdString(write_pol(poli)));
         }
+        else if(ui->comboBox->currentText() == "x^k")
+        {
+            unsigned long int x_degree = ui->input2->text().toInt();
+            Polynom poli = MUL_Pxk_P(poli1,x_degree);
+            ui->result_out->setText(QString::fromStdString(write_pol(poli)));
+        }
+
     }
+
 }
 
