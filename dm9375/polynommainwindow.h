@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "polynomsumwindow.h"
+#include "polynomonewindow.h"
 namespace Ui {
 class PolynomMainWindow;
 }
@@ -20,12 +21,15 @@ private slots:
 
     void on_back_clicked();
 
+    void on_pushButton_clicked();
+
 signals:
     void firstWindow();
 
 private:
     Ui::PolynomMainWindow *ui;
     PolynomSumWindow *polynomSum;
+    PolynomOneWindow *polynomOne;
 };
 
 #endif // POLYNOMMAINWINDOW_H

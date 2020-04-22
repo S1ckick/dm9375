@@ -7,6 +7,15 @@ PolynomSumWindow::PolynomSumWindow(QWidget *parent) :
     ui(new Ui::PolynomSumWindow)
 {
     ui->setupUi(this);
+    ui->comboBox->addItem("Сложение");
+    ui->comboBox->addItem("Вычитание");
+    ui->comboBox->addItem("Умножение");
+    ui->comboBox->addItem("Частное");
+    ui->comboBox->addItem("Остаток");
+    ui->comboBox->addItem("Умножение на число");
+    ui->comboBox->addItem("НОД");
+    ui->comboBox->addItem("x^k");
+
 }
 
 PolynomSumWindow::~PolynomSumWindow()
@@ -19,107 +28,74 @@ void PolynomSumWindow::on_back_clicked()
         this->close();
         emit firstWindow();
 }
-bool sortbysec(const std::pair<RationalFraction,int> &a,
-               const std::pair<RationalFraction,int> &b)
+RationalFraction read_frac(std::string rational_str)
 {
-    return (a.second > b.second);
+    unsigned long int i=0;
+    std::string numenator;
+    std::string denominator;
+    while(rational_str[i]!='/')
+    {
+        numenator+=rational_str[i];
+        i++;
+    }
+    i++;
+    while(i<rational_str.size())
+    {
+        denominator+=rational_str[i];
+        i++;
+    }
+    RationalFraction rational(numenator,denominator);
+    return rational;
 }
-
-Polynom read_pol(std::string polynom1)
+std::string write_frac(RationalFraction rational)
 {
-    unsigned int i=0;
-    std::vector<std::pair<RationalFraction,int>> mas;
-    while(i<=polynom1.length()-1)
-    {
-        if (polynom1[i]=='+' || polynom1[i]=='-')
-        {
-            std::string numenator;
-            if (polynom1[i]=='-')
-                numenator+=polynom1[i];
-            i++;
-
-            while(polynom1[i]!='/')
-            {
-                numenator+=polynom1[i];
-                i++;
-            }
-            i++;
-            std::string denominator;
-            while(polynom1[i]!='x')
-            {
-                denominator+=polynom1[i];
-                i++;
-            }
-            i+=2;
-            int degree=0;
-            std::string str_degree;
-            while(polynom1[i]!='+' && polynom1[i]!='-' && i!=polynom1.length())
-            {
-                str_degree+=polynom1[i];
-                i++;
-            }
-            degree=QString::fromStdString(str_degree).toInt();
-            RationalFraction rational(numenator,denominator);
-            mas.push_back(std::make_pair(rational,degree));
-        }
-
-    }
-    std::sort(mas.begin(),mas.end(),sortbysec);
-    RationalFraction *coef = new RationalFraction[mas[0].second+1];
-    qDebug()<<QString::fromStdString(mas[0].first.numenator.ToString());
-    for (unsigned i=0;i<mas.size();i++)
-        coef[mas[0].second-mas[i].second]=mas[i].first;
-    Polynom poli(coef,mas[0].second);
-    return poli;
+   return rational.numenator.ToString()+"/"+rational.denominator.ToString();
 }
-
-QString write_pol(Polynom poli)
-{
-    std::string str_pol;
-    qDebug()<<"++";
-    for(int i=0;i<=poli.degree;i++)
-    {
-        qDebug()<<QString::fromStdString(poli.coef[i].numenator.ToString())<<" "<<QString::fromStdString(poli.coef[i].denominator.ToString())<<endl;
-    }
-    qDebug()<<"+++";
-    for(int i=0;i<=poli.degree;i++)
-    {
-        if (!(poli.coef[i].numenator.number.size==1 && poli.coef[i].numenator.number.coef[0]==0))
-        {
-            if (poli.coef[i].numenator.sign==plus_sign && i!=0)
-                str_pol+="+";
-            str_pol+=poli.coef[i].numenator.ToString();
-            str_pol+="/";
-            str_pol+=poli.coef[i].denominator.ToString();
-            str_pol+="x^";
-            str_pol+=std::to_string(poli.degree-i);
-        }
-    }
-    return QString::fromStdString(str_pol);
-}
-
 void PolynomSumWindow::on_result_clicked()
 {
-        std::string polynom1 = ui->polynom1->text().toStdString();
-        std::string polynom2 = ui->polynom2->text().toStdString();
+    if ((ui->comboBox->currentText() == "Сложение")||(ui->comboBox->currentText() == "Вычитание")||(ui->comboBox->currentText() == "Умножение")||(ui->comboBox->currentText() == "Частное")||(ui->comboBox->currentText() == "Остаток"))
+    {
+        std::string polynom1 = ui->input1->text().toStdString();
+        std::string polynom2 = ui->input2->text().toStdString();
         Polynom poli1 = read_pol(polynom1);
         Polynom poli2 = read_pol(polynom2);
-        Polynom poli_out = ADD_PP_P(poli1,poli2);
-        ui->result_out->setText(write_pol(poli_out));
-        for(int i=0;i<=poli1.degree;i++)
+        if (ui->comboBox->currentText() == "Сложение")
         {
-            qDebug()<<QString::fromStdString(poli1.coef[i].numenator.ToString())<<" "<<QString::fromStdString(poli1.coef[i].denominator.ToString())<<endl;
+            Polynom poli_out = ADD_PP_P(poli1,poli2);
+            ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
         }
-        qDebug()<<"-----";
-        for(int i=0;i<=poli2.degree;i++)
+        else if(ui->comboBox->currentText() == "Вычитание")
         {
-            qDebug()<<QString::fromStdString(poli2.coef[i].numenator.ToString())<<" "<<QString::fromStdString(poli2.coef[i].denominator.ToString())<<endl;
+            Polynom poli_out = SUB_PP_P(poli1,poli2);
+            ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
         }
-        qDebug()<<"-----";
-        for(int i=0;i<=poli_out.degree;i++)
+        else if(ui->comboBox->currentText() == "Умножение")
         {
-            qDebug()<<QString::fromStdString(poli_out.coef[i].numenator.ToString())<<" "<<QString::fromStdString(poli_out.coef[i].denominator.ToString())<<endl;
+            Polynom poli_out = MUL_PP_P(poli1,poli2);
+            ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
         }
-
+        else if(ui->comboBox->currentText() == "Частное")
+        {
+            Polynom poli_out = DIV_PP_P(poli1,poli2);
+            ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
+        }
+        else if(ui->comboBox->currentText() == "Остаток")
+        {
+            Polynom poli_out = MOD_PP_P(poli1,poli2);
+            ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
+        }
+    }
+    else
+    {
+        std::string polynom_str = ui->input1->text().toStdString();
+        std::string rational_str = ui->input2->text().toStdString();
+        Polynom poli1=read_pol(polynom_str);
+        RationalFraction rational = read_frac(rational_str);
+        if(ui->comboBox->currentText() == "Умножение на число")
+        {
+            Polynom poli = MUL_PQ_P(poli1,rational);
+            ui->result_out->setText(QString::fromStdString(write_pol(poli)));
+        }
+    }
 }
 

@@ -135,17 +135,6 @@ Polynom SUB_PP_P(Polynom first, Polynom second)
         i++;
     }
 
-    if (i != 0)
-    {
-        for (int j = 0; j <= result.degree - i; j++)
-        {
-            coef[j] = coef[j + i];
-        }
-
-        coef = resize(coef, result.degree + 1 - i, result.degree + 1);
-        result.degree -= i;
-    }
-
     result = Polynom(coef, result.degree);
 
     delete[] coef;
@@ -185,7 +174,7 @@ RationalFraction LED_P_Q(Polynom polynom)
 }
 
 //Бухтияров Марат 9375
-int DEG_P_N(Polynom inputValue)
+ int DEG_P_N(Polynom inputValue)
 {
     //Фуункция возвращающая значение степени многочлена
     int currentCoef = 0;
@@ -243,7 +232,7 @@ Polynom DIV_PP_P(Polynom polynom1, Polynom polynom2)
 {
     Polynom prom, result;
     if (polynom1.degree < polynom2.degree)
-        return Polynom();
+        return polynom1;
     else
     {
         while (DEG_P_N(polynom1) >= DEG_P_N(polynom2))
@@ -291,9 +280,12 @@ Polynom DER_P_P(Polynom polynom)
 
     for (int i = 0; i < polynom.degree; i++)
     {
+        if (!(polynom.coef[i].numenator.number.size==1 && polynom.coef[i].numenator.number.coef[0]==0))
+        {
         coef[i].denominator = polynom.coef[i].denominator;
         coef[i].numenator = MUL_ZZ_Z(polynom.coef[i].numenator, BigInteger(polynom.degree - i));
         coef[i] = RED_Q_Q(coef[i]);
+        }
     }
 
     result = Polynom(coef, polynom.degree - 1);
@@ -317,4 +309,78 @@ Polynom NMR_P_P(Polynom polynom)
     result = FAC_P_Q(result);
 
     return result;
+}
+
+/***************************************************************************************************/
+bool sortbysec(const std::pair<RationalFraction,int> &a,
+               const std::pair<RationalFraction,int> &b)
+{
+    return (a.second > b.second);
+}
+
+Polynom read_pol(std::string polynom1)
+{
+    unsigned int i=0;
+    std::vector<std::pair<RationalFraction,int>> mas;
+    while(i<=polynom1.length()-1)
+    {
+        if (polynom1[i]=='+' || polynom1[i]=='-')
+        {
+            std::string numenator;
+            if (polynom1[i]=='-')
+                numenator+=polynom1[i];
+            i++;
+
+            while(polynom1[i]!='/')
+            {
+                numenator+=polynom1[i];
+                i++;
+            }
+            i++;
+            std::string denominator;
+            while(polynom1[i]!='x')
+            {
+                denominator+=polynom1[i];
+                i++;
+            }
+            i+=2;
+            int degree=0;
+            std::string str_degree;
+            while(polynom1[i]!='+' && polynom1[i]!='-' && i!=polynom1.length())
+            {
+                str_degree+=polynom1[i];
+                i++;
+            }
+            degree=QString::fromStdString(str_degree).toInt();
+            RationalFraction rational(numenator,denominator);
+            mas.push_back(std::make_pair(rational,degree));
+        }
+
+    }
+    std::sort(mas.begin(),mas.end(),sortbysec);
+    RationalFraction *coef = new RationalFraction[mas[0].second+1];
+    for (unsigned i=0;i<mas.size();i++)
+        coef[mas[0].second-mas[i].second]=mas[i].first;
+    Polynom poli(coef,mas[0].second);
+    return poli;
+}
+
+
+std::string write_pol(Polynom poli)
+{
+    std::string str_pol;
+    for(int i=0;i<=poli.degree;i++)
+    {
+        if (!(poli.coef[i].numenator.number.size==1 && poli.coef[i].numenator.number.coef[0]==0))
+        {
+            if (poli.coef[i].numenator.sign==plus_sign && i!=0)
+                str_pol+="+";
+            str_pol+=poli.coef[i].numenator.ToString();
+            str_pol+="/";
+            str_pol+=poli.coef[i].denominator.ToString();
+            str_pol+="x^";
+            str_pol+=std::to_string(poli.degree-i);
+        }
+    }
+    return str_pol;
 }

@@ -28,6 +28,7 @@ SOURCES += \
     naturalmainwindow.cpp \
     naturalsumwindow.cpp \
     polynommainwindow.cpp \
+    polynomonewindow.cpp \
     polynomsumwindow.cpp
 
 HEADERS += \
@@ -39,6 +40,7 @@ HEADERS += \
     naturalmainwindow.h \
     naturalsumwindow.h \
     polynommainwindow.h \
+    polynomonewindow.h \
     polynomsumwindow.h
 
 FORMS += \
@@ -48,6 +50,7 @@ FORMS += \
     naturalmainwindow.ui \
     naturalsumwindow.ui \
     polynommainwindow.ui \
+    polynomonewindow.ui \
     polynomsumwindow.ui
 
 # Default rules for deployment.
