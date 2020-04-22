@@ -135,32 +135,32 @@ BigInteger ADD_ZZ_Z(BigInteger first, BigInteger second)
         result.number = ADD_NN_N(ABS_Z_N(first), ABS_Z_N(second));
         return result;
     }
-    if(first.sign == minus_sign)
+    if (first.sign == minus_sign)
     {
         BigInteger tmp(second);
         second = first;
         first = tmp;
         result.sign = plus_sign;
     }
-        if (COM_NN_D(ABS_Z_N(first), ABS_Z_N(second)) == 2)
+    if (COM_NN_D(ABS_Z_N(first), ABS_Z_N(second)) == 2)
+    {
+        result.number = SUB_NN_N(ABS_Z_N(first), ABS_Z_N(second));
+        return result;
+    }
+    else
+    {
+        result.number = SUB_NN_N(ABS_Z_N(second), ABS_Z_N(first));
+        if (!NZER_N_B(result.number))
         {
-            result.number = SUB_NN_N(ABS_Z_N(first), ABS_Z_N(second));
+            result.sign = plus_sign;
             return result;
         }
         else
         {
-            result.number = SUB_NN_N(ABS_Z_N(second), ABS_Z_N(first));
-            if (!NZER_N_B(result.number))
-            {
-                result.sign = plus_sign;
-                return result;
-            }
-            else
-            {
-                result.sign = minus_sign;
-                return result;
-            }
+            result.sign = minus_sign;
+            return result;
         }
+    }
 }
 
 //Гладилин Сергей 9375

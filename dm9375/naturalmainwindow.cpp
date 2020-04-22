@@ -1,9 +1,8 @@
 #include "naturalmainwindow.h"
 #include "ui_naturalmainwindow.h"
 
-NaturalMainWindow::NaturalMainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::NaturalMainWindow)
+NaturalMainWindow::NaturalMainWindow(QWidget *parent)
+    : QMainWindow(parent), ui(new Ui::NaturalMainWindow)
 {
     ui->setupUi(this);
     naturalSum = new NaturalSumWindow();

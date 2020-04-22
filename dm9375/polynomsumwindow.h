@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 
-namespace Ui {
+namespace Ui
+{
 class PolynomSumWindow;
 }
 
@@ -11,19 +12,21 @@ class PolynomSumWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
+  public:
     explicit PolynomSumWindow(QWidget *parent = nullptr);
     ~PolynomSumWindow();
 
-private slots:
+  private slots:
     void on_back_clicked();
 
     void on_result_clicked();
 
-signals:
+    void on_comboBox_activated(const QString &arg1);
+
+  signals:
     void firstWindow();
 
-private:
+  private:
     Ui::PolynomSumWindow *ui;
 };
 

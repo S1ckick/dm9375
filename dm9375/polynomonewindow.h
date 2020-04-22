@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 
-namespace Ui {
+namespace Ui
+{
 class PolynomOneWindow;
 }
 
@@ -11,19 +12,19 @@ class PolynomOneWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
+  public:
     explicit PolynomOneWindow(QWidget *parent = nullptr);
     ~PolynomOneWindow();
 
-private slots:
+  private slots:
     void on_back_clicked();
 
     void on_result_clicked();
 
-signals:
+  signals:
     void firstWindow();
 
-private:
+  private:
     Ui::PolynomOneWindow *ui;
 };
 

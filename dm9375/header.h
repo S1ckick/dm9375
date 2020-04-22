@@ -140,6 +140,9 @@ BigInteger MUL_ZZ_Z(BigInteger firstInt, BigInteger secondInt);
 //Шагиев Даниил 9375 *
 BigInteger DIV_ZZ_Z(BigInteger first, BigInteger second);
 
+//Шагиев Даниил 9375 *
+BigInteger MOD_ZZ_Z(BigInteger first, BigInteger second);
+
 /*************************RationalFraction********************************/
 
 //Герасимов Вадим 9375 *
@@ -190,7 +193,7 @@ int DEG_P_N(Polynom inputValue);
 Polynom FAC_P_Q(Polynom polynom);
 
 //Данилеску Игорь 9375
-Polynom MUL_PP_P (Polynom poli1, Polynom poli2);
+Polynom MUL_PP_P(Polynom poli1, Polynom poli2);
 
 //Данилеску Игорь 9375 *
 Polynom DIV_PP_P(Polynom polynom1, Polynom polynom2);
@@ -212,6 +215,10 @@ bool sortbysec(const std::pair<RationalFraction,int> &a,
 Polynom read_pol(std::string polynom1);
 
 std::string write_pol(Polynom poli);
+
+RationalFraction read_frac(std::string rational_str);
+
+std::string write_frac(RationalFraction rational);
 
 
 #endif // HEADER_H

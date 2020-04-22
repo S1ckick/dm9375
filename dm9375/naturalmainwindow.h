@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include "naturalsumwindow.h"
-namespace Ui {
+namespace Ui
+{
 class NaturalMainWindow;
 }
 
@@ -11,21 +12,21 @@ class NaturalMainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
+  public:
     explicit NaturalMainWindow(QWidget *parent = nullptr);
     ~NaturalMainWindow();
 
-signals:
+  signals:
     void firstWindow();
 
-private slots:
+  private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
 
-private:
+  private:
     Ui::NaturalMainWindow *ui;
-    NaturalSumWindow * naturalSum;
+    NaturalSumWindow *naturalSum;
 };
 
 #endif // NATURALMAINWINDOW_H

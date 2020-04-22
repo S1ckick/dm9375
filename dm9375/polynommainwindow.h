@@ -4,7 +4,8 @@
 #include <QMainWindow>
 #include "polynomsumwindow.h"
 #include "polynomonewindow.h"
-namespace Ui {
+namespace Ui
+{
 class PolynomMainWindow;
 }
 
@@ -12,21 +13,21 @@ class PolynomMainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
+  public:
     explicit PolynomMainWindow(QWidget *parent = nullptr);
     ~PolynomMainWindow();
 
-private slots:
+  private slots:
     void on_sum_clicked();
 
     void on_back_clicked();
 
     void on_pushButton_clicked();
 
-signals:
+  signals:
     void firstWindow();
 
-private:
+  private:
     Ui::PolynomMainWindow *ui;
     PolynomSumWindow *polynomSum;
     PolynomOneWindow *polynomOne;

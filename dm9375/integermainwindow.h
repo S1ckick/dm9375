@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include "integersumwindow.h"
-namespace Ui {
+namespace Ui
+{
 class IntegerMainWindow;
 }
 
@@ -11,19 +12,19 @@ class IntegerMainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
+  public:
     explicit IntegerMainWindow(QWidget *parent = nullptr);
     ~IntegerMainWindow();
-signals:
+  signals:
     void firstWindow();
-private slots:
+  private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
 
-private:
+  private:
     Ui::IntegerMainWindow *ui;
-    IntegerSumWindow* integerSum;
+    IntegerSumWindow *integerSum;
 };
 
 #endif // INTEGERMAINWINDOW_H

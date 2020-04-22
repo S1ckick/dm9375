@@ -111,6 +111,9 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="maxLength">
+     <number>999999999</number>
+    </property>
    </widget>
    <widget class="QLineEdit" name="natural2">
     <property name="geometry">
@@ -120,6 +123,22 @@
       <width>281</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="maxLength">
+     <number>999999999</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="warning">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>0</y>
+      <width>221</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

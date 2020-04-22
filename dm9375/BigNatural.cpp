@@ -8,7 +8,7 @@ BigNatural::BigNatural()
 
 BigNatural::~BigNatural()
 {
-    delete [] coef;
+    delete[] coef;
 }
 
 //Получаем на вход массив коэффициентов и его размер
@@ -90,7 +90,7 @@ int COM_NN_D(BigNatural a, BigNatural b)
         }
         else
         {
-            for (int i = a.size-1; i >= 0; --i)
+            for (int i = a.size - 1; i >= 0; --i)
             {
                 if (a.coef[i] > b.coef[i])
                 {
