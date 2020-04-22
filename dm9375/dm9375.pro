@@ -42,10 +42,8 @@ HEADERS += \
     rationalmainwindow.h
 
 FORMS += \
-    integermainwindow.ui \
     integersumwindow.ui \
     mainwindow.ui \
-    naturalmainwindow.ui \
     naturalsumwindow.ui \
     polynommainwindow.ui \
     polynomonewindow.ui \
