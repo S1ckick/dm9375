@@ -65,10 +65,10 @@ Polynom read_pol(std::string polynom1)
 
     }
     std::sort(mas.begin(),mas.end(),sortbysec);
-    qDebug()<<mas[1].second;
     RationalFraction *coef = new RationalFraction[mas[0].second+1];
+    qDebug()<<QString::fromStdString(mas[0].first.numenator.ToString());
     for (unsigned i=0;i<mas.size();i++)
-        coef[mas[i].second]=mas[i].first;
+        coef[mas[0].second-mas[i].second]=mas[i].first;
     Polynom poli(coef,mas[0].second);
     return poli;
 }
@@ -76,17 +76,23 @@ Polynom read_pol(std::string polynom1)
 QString write_pol(Polynom poli)
 {
     std::string str_pol;
-    for(int i=poli.degree;i>=0;i--)
+    qDebug()<<"++";
+    for(int i=0;i<=poli.degree;i++)
     {
-        if (poli.coef[i].numenator.number.coef[0]!=0)
+        qDebug()<<QString::fromStdString(poli.coef[i].numenator.ToString())<<" "<<QString::fromStdString(poli.coef[i].denominator.ToString())<<endl;
+    }
+    qDebug()<<"+++";
+    for(int i=0;i<=poli.degree;i++)
+    {
+        if (!(poli.coef[i].numenator.number.size==1 && poli.coef[i].numenator.number.coef[0]==0))
         {
-            if (poli.coef[i].numenator.sign==plus_sign && i!=poli.degree)
+            if (poli.coef[i].numenator.sign==plus_sign && i!=0)
                 str_pol+="+";
             str_pol+=poli.coef[i].numenator.ToString();
             str_pol+="/";
             str_pol+=poli.coef[i].denominator.ToString();
             str_pol+="x^";
-            str_pol+=std::to_string(i);
+            str_pol+=std::to_string(poli.degree-i);
         }
     }
     return QString::fromStdString(str_pol);
@@ -100,6 +106,20 @@ void PolynomSumWindow::on_result_clicked()
         Polynom poli2 = read_pol(polynom2);
         Polynom poli_out = ADD_PP_P(poli1,poli2);
         ui->result_out->setText(write_pol(poli_out));
+        for(int i=0;i<=poli1.degree;i++)
+        {
+            qDebug()<<QString::fromStdString(poli1.coef[i].numenator.ToString())<<" "<<QString::fromStdString(poli1.coef[i].denominator.ToString())<<endl;
+        }
+        qDebug()<<"-----";
+        for(int i=0;i<=poli2.degree;i++)
+        {
+            qDebug()<<QString::fromStdString(poli2.coef[i].numenator.ToString())<<" "<<QString::fromStdString(poli2.coef[i].denominator.ToString())<<endl;
+        }
+        qDebug()<<"-----";
+        for(int i=0;i<=poli_out.degree;i++)
+        {
+            qDebug()<<QString::fromStdString(poli_out.coef[i].numenator.ToString())<<" "<<QString::fromStdString(poli_out.coef[i].denominator.ToString())<<endl;
+        }
 
 }
 
