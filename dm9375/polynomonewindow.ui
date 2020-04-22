@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PolynomSumWindow</class>
- <widget class="QMainWindow" name="PolynomSumWindow">
+ <class>PolynomOneWindow</class>
+ <widget class="QMainWindow" name="PolynomOneWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -30,8 +30,8 @@
    <widget class="QTextEdit" name="result_out">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>180</y>
+      <x>110</x>
+      <y>200</y>
       <width>351</width>
       <height>141</height>
      </rect>
@@ -40,8 +40,8 @@
    <widget class="QPushButton" name="result">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>130</y>
+      <x>210</x>
+      <y>150</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -50,21 +50,11 @@
      <string>result</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="input1">
+   <widget class="QLineEdit" name="polynom">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>40</y>
-      <width>201</width>
-      <height>21</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="input2">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>90</y>
+      <x>170</x>
+      <y>110</y>
       <width>201</width>
       <height>21</height>
      </rect>
@@ -73,8 +63,8 @@
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>50</y>
+      <x>20</x>
+      <y>70</y>
       <width>141</width>
       <height>32</height>
      </rect>

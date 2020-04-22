@@ -32,12 +32,25 @@
      <rect>
       <x>10</x>
       <y>70</y>
-      <width>112</width>
+      <width>251</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
-     <string>sum</string>
+     <string>Действия над 2-мя многочленами</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>70</y>
+      <width>241</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Действия с многочленом</string>
     </property>
    </widget>
   </widget>

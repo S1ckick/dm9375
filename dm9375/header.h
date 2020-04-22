@@ -206,5 +206,12 @@ Polynom DER_P_P(Polynom polynom);
 
 //Фатеева Анастасия 9375 *
 Polynom NMR_P_P(Polynom polynom);
+/*******************************************************/
+bool sortbysec(const std::pair<RationalFraction,int> &a,
+               const std::pair<RationalFraction,int> &b);
+Polynom read_pol(std::string polynom1);
+
+std::string write_pol(Polynom poli);
+
 
 #endif // HEADER_H

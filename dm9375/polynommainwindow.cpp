@@ -8,6 +8,8 @@ PolynomMainWindow::PolynomMainWindow(QWidget *parent) :
     ui->setupUi(this);
     polynomSum = new PolynomSumWindow();
     connect(polynomSum, &PolynomSumWindow::firstWindow, this, &PolynomMainWindow::show);
+    polynomOne = new PolynomOneWindow();
+    connect(polynomOne, &PolynomOneWindow::firstWindow, this, &PolynomMainWindow::show);
 }
 
 PolynomMainWindow::~PolynomMainWindow()
@@ -25,3 +27,9 @@ void PolynomMainWindow::on_sum_clicked()
     this->close();
 }
 
+
+void PolynomMainWindow::on_pushButton_clicked()
+{
+    polynomOne->show();
+    this->close();
+}
