@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(naturalWindow, &NaturalMainWindow::firstWindow, this, &MainWindow::show);
     integerWindow = new IntegerMainWindow();
     connect(integerWindow, &IntegerMainWindow::firstWindow, this, &MainWindow::show);
+    polynomWindow = new PolynomMainWindow();
+    connect(polynomWindow, &PolynomMainWindow::firstWindow, this, &MainWindow::show);
 }
 
 MainWindow::~MainWindow()
@@ -23,11 +25,15 @@ void MainWindow::on_pushButton_clicked()
     this->close();
 }
 
-
-
-
 void MainWindow::on_pushButton_2_clicked()
 {
     integerWindow->show();
     this->close();
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    polynomWindow->show();
+    this->close();
+
 }

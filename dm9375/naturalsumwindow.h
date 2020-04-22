@@ -2,7 +2,6 @@
 #define NATURALSUMWINDOW_H
 
 #include <QMainWindow>
-#include "header.h"
 namespace Ui {
 class NaturalSumWindow;
 }

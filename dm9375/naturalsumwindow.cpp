@@ -1,6 +1,7 @@
 #include "naturalsumwindow.h"
 #include "ui_naturalsumwindow.h"
-
+#include <QRegExpValidator>
+#include "header.h"
 
 NaturalSumWindow::NaturalSumWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,6 +12,9 @@ NaturalSumWindow::NaturalSumWindow(QWidget *parent) :
     ui->comboBox->addItem("Сложение");
     ui->comboBox->addItem("Вычитание");
     ui->comboBox->addItem("Умножение");
+    QValidator *validator = new QRegExpValidator(QRegExp("\\d+"));
+    ui->natural1->setValidator(validator);
+    ui->natural2->setValidator(validator);
 }
 
 NaturalSumWindow::~NaturalSumWindow()
@@ -28,8 +32,8 @@ void NaturalSumWindow::on_pushButton_clicked()
 
 void NaturalSumWindow::on_result_clicked()
 {
-    std::string natural1 = ui->natural1->toPlainText().toStdString();
-    std::string natural2 = ui->natural2->toPlainText().toStdString();
+    std::string natural1 = ui->natural1->text().toStdString();
+    std::string natural2 = ui->natural2->text().toStdString();
     BigNatural BigN1(natural1);
     BigNatural BigN2(natural2);
     if (ui->comboBox->currentText() == "Сложение")

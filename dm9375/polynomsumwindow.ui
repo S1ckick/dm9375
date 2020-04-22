@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>IntegerSumWindow</class>
- <widget class="QMainWindow" name="IntegerSumWindow">
+ <class>PolynomSumWindow</class>
+ <widget class="QMainWindow" name="PolynomSumWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="back">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>20</x>
+      <y>10</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -31,33 +31,17 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>240</y>
-      <width>251</width>
-      <height>74</height>
+      <y>180</y>
+      <width>351</width>
+      <height>141</height>
      </rect>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>20</y>
-      <width>112</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
     </property>
    </widget>
    <widget class="QPushButton" name="result">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>110</y>
+      <x>220</x>
+      <y>130</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -66,22 +50,22 @@
      <string>result</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="integer2">
+   <widget class="QLineEdit" name="polynom1">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>60</y>
-      <width>161</width>
+      <x>180</x>
+      <y>40</y>
+      <width>201</width>
       <height>21</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="integer1">
+   <widget class="QLineEdit" name="polynom2">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>30</y>
-      <width>161</width>
+      <x>180</x>
+      <y>90</y>
+      <width>201</width>
       <height>21</height>
      </rect>
     </property>
