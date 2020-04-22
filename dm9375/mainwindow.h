@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "naturalmainwindow.h"
-#include "integermainwindow.h"
+#include "naturalsumwindow.h"
+#include "integersumwindow.h"
 #include "polynommainwindow.h"
 #include "rationalmainwindow.h"
 QT_BEGIN_NAMESPACE
@@ -32,8 +32,8 @@ class MainWindow : public QMainWindow
 
   private:
     Ui::MainWindow *ui;
-    NaturalMainWindow *naturalWindow;
-    IntegerMainWindow *integerWindow;
+    NaturalSumWindow *naturalWindow;
+    IntegerSumWindow *integerWindow;
     PolynomMainWindow *polynomWindow;
     RationalMainWindow *rationalWindow;
 };

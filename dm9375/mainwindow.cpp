@@ -4,10 +4,10 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    naturalWindow = new NaturalMainWindow();
-    connect(naturalWindow, &NaturalMainWindow::firstWindow, this, &MainWindow::show);
-    integerWindow = new IntegerMainWindow();
-    connect(integerWindow, &IntegerMainWindow::firstWindow, this, &MainWindow::show);
+    naturalWindow = new NaturalSumWindow();
+    connect(naturalWindow, &NaturalSumWindow::firstWindow, this, &MainWindow::show);
+    integerWindow = new IntegerSumWindow();
+    connect(integerWindow, &IntegerSumWindow::firstWindow, this, &MainWindow::show);
     polynomWindow = new PolynomMainWindow();
     connect(polynomWindow, &PolynomMainWindow::firstWindow, this, &MainWindow::show);
     rationalWindow = new RationalMainWindow();
