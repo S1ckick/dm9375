@@ -21,11 +21,9 @@ SOURCES += \
     Polynom.cpp \
     RationalFraction.cpp \
     globalnumbers.cpp \
-    integermainwindow.cpp \
     integersumwindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    naturalmainwindow.cpp \
     naturalsumwindow.cpp \
     polynommainwindow.cpp \
     polynomonewindow.cpp \
@@ -35,10 +33,8 @@ SOURCES += \
 HEADERS += \
     globalnumbers.h \
     header.h \
-    integermainwindow.h \
     integersumwindow.h \
     mainwindow.h \
-    naturalmainwindow.h \
     naturalsumwindow.h \
     polynommainwindow.h \
     polynomonewindow.h \
