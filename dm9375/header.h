@@ -32,7 +32,7 @@ struct BigInteger
     Sign sign; //Знак числа
     BigNatural number; //Число
     BigInteger();
-    ~BigInteger() = default;
+    ~BigInteger();
     BigInteger(const BigInteger &BigInt);
     BigInteger &operator=(BigInteger const &BigInt);
     explicit BigInteger(int number);

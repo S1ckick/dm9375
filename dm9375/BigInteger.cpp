@@ -6,6 +6,10 @@ BigInteger::BigInteger()
     number = BigNatural();
 }
 
+BigInteger::~BigInteger()
+{
+}
+
 BigInteger &BigInteger::operator=(BigInteger const &BigInt)
 {
     sign = BigInt.sign;
@@ -101,6 +105,7 @@ BigInteger MUL_ZM_Z(BigInteger biIn)
         res.sign = plus_sign;
         return res;
     }
+    return res;
 }
 
 //Шарифуллин Руслан 9375
@@ -126,21 +131,36 @@ BigInteger ADD_ZZ_Z(BigInteger first, BigInteger second)
     BigInteger result;
     result.sign = first.sign;
     if (first.sign == second.sign)
-        result.number = ADD_NN_N(ABS_Z_N(first), ABS_Z_N(second));
-    else
     {
+        result.number = ADD_NN_N(ABS_Z_N(first), ABS_Z_N(second));
+        return result;
+    }
+    if(first.sign == minus_sign)
+    {
+        BigInteger tmp(second);
+        second = first;
+        first = tmp;
+        result.sign = plus_sign;
+    }
         if (COM_NN_D(ABS_Z_N(first), ABS_Z_N(second)) == 2)
+        {
             result.number = SUB_NN_N(ABS_Z_N(first), ABS_Z_N(second));
+            return result;
+        }
         else
         {
             result.number = SUB_NN_N(ABS_Z_N(second), ABS_Z_N(first));
             if (!NZER_N_B(result.number))
+            {
                 result.sign = plus_sign;
+                return result;
+            }
             else
-                result = MUL_ZM_Z(result);
+            {
+                result.sign = minus_sign;
+                return result;
+            }
         }
-    }
-    return result;
 }
 
 //Гладилин Сергей 9375

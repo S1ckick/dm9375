@@ -82,7 +82,6 @@ Polynom ADD_PP_P(Polynom first, Polynom second)
 
     if (first.degree < second.degree)
         return ADD_PP_P(second, first);
-    ;
 
     coef = new RationalFraction[first.degree + 1];
 
@@ -94,23 +93,6 @@ Polynom ADD_PP_P(Polynom first, Polynom second)
 
     for (i = deg; i <= first.degree; i++)
         coef[i] = ADD_QQ_Q(first.coef[i], second.coef[i - deg]);
-
-    i = 0;
-    while (i < result.degree && !NZER_N_B(coef[i].numenator.number))
-        i++;
-
-    if (i != 0)
-    {
-        for (int j = 0; j <= result.degree - i; j++)
-        {
-            coef[j] = coef[j + i];
-        }
-
-        coef = resize(coef, result.degree + 1 - i, result.degree + 1);
-
-        result.degree -= i;
-    }
-
     result = Polynom(coef, result.degree);
 
     delete[] coef;
