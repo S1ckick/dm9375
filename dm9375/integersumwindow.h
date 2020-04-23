@@ -21,7 +21,11 @@ class IntegerSumWindow : public QMainWindow
 
     void on_result_clicked();
 
-  private:
+    void on_known1_clicked();
+
+    void on_known1_2_clicked();
+
+private:
     Ui::IntegerSumWindow *ui;
 };
 

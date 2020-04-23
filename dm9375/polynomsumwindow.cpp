@@ -28,6 +28,10 @@ PolynomSumWindow::~PolynomSumWindow()
 void PolynomSumWindow::on_back_clicked()
 {
     this->close();
+    ui->warning->clear();
+    ui->input1->clear();
+    ui->input2->clear();
+    this->close();
     emit firstWindow();
 }
 void PolynomSumWindow::on_result_clicked()
@@ -45,54 +49,52 @@ void PolynomSumWindow::on_result_clicked()
             std::string polynom2 = ui->input2->text().toStdString();
             Polynom poli1 = read_pol(polynom1);
             Polynom poli2 = read_pol(polynom2);
+            Polynom poli_out;
             if (ui->comboBox->currentText() == "Сложение")
             {
-                Polynom poli_out = ADD_PP_P(poli1, poli2);
-                ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
+                poli_out = ADD_PP_P(poli1, poli2);
             }
             else if (ui->comboBox->currentText() == "Вычитание")
             {
-                Polynom poli_out = SUB_PP_P(poli1, poli2);
-                ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
+                poli_out = SUB_PP_P(poli1, poli2);
             }
             else if (ui->comboBox->currentText() == "Умножение")
             {
-                Polynom poli_out = MUL_PP_P(poli1, poli2);
-                ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
+                poli_out = MUL_PP_P(poli1, poli2);
             }
             else if (ui->comboBox->currentText() == "Частное")
             {
-                Polynom poli_out = DIV_PP_P(poli1, poli2);
-                ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
+                poli_out = DIV_PP_P(poli1, poli2);
             }
             else if (ui->comboBox->currentText() == "Остаток")
             {
-                Polynom poli_out = MOD_PP_P(poli1, poli2);
-                ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
+                poli_out = MOD_PP_P(poli1, poli2);
             }
             else if (ui->comboBox->currentText() == "НОД")
             {
-                Polynom poli_out = GCF_PP_P(poli1, poli2);
-                ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
+                poli_out = GCF_PP_P(poli1, poli2);
             }
+            ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
+            globalNumber.set_polynom(QString::fromStdString(write_pol(poli_out)));
         }
         else
         {
             std::string polynom_str = ui->input1->text().toStdString();
             Polynom poli1 = read_pol(polynom_str);
+            Polynom poli;
             if (ui->comboBox->currentText() == "Умножение на число")
             {
                 std::string rational_str = ui->input2->text().toStdString();
                 RationalFraction rational = read_frac(rational_str);
-                Polynom poli = MUL_PQ_P(poli1, rational);
-                ui->result_out->setText(QString::fromStdString(write_pol(poli)));
+                poli = MUL_PQ_P(poli1, rational);
             }
             else if (ui->comboBox->currentText() == "x^k")
             {
                 unsigned long int x_degree = ui->input2->text().toInt();
-                Polynom poli = MUL_Pxk_P(poli1, x_degree);
-                ui->result_out->setText(QString::fromStdString(write_pol(poli)));
+                poli = MUL_Pxk_P(poli1, x_degree);
             }
+            ui->result_out->setText(QString::fromStdString(write_pol(poli)));
+            globalNumber.set_polynom(QString::fromStdString(write_pol(poli)));
         }
     }
     else
@@ -129,5 +131,22 @@ void PolynomSumWindow::on_comboBox_activated(const QString &arg1)
         ui->input1->setValidator(validator);
         QValidator *validator2 = new QRegExpValidator(QRegExp("\\d+"));
         ui->input2->setValidator(validator2);
+    }
+}
+
+void PolynomSumWindow::on_pushButton_clicked()
+{
+    ui->input1->setText(globalNumber.get_polynom());
+}
+
+void PolynomSumWindow::on_pushButton_2_clicked()
+{
+    if(ui->comboBox->currentText()=="Умножение на число")
+    {
+        ui->input2->setText(globalNumber.get_biginteger());
+    }
+    else if(!(ui->comboBox->currentText()=="x^k"))
+    {
+        ui->input2->setText(globalNumber.get_polynom());
     }
 }

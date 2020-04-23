@@ -36,4 +36,13 @@ QString globalNumbers::get_rational()
 {
     return globalNumbers::rational;
 }
+void globalNumbers::set_polynom(const QString &pol)
+{
+    globalNumbers::polynom = pol;
+}
+
+QString globalNumbers::get_polynom()
+{
+    return globalNumbers::polynom;
+}
 globalNumbers globalNumber;

@@ -13,11 +13,14 @@ class globalNumbers
     QString get_biginteger();
     void set_rational(const QString &rat);
     QString get_rational();
+    void set_polynom(const QString &pol);
+    QString get_polynom();
 
   private:
     QString bign;
     QString bigi;
     QString rational;
+    QString polynom;
 };
 extern globalNumbers globalNumber;
 #endif // GLOBALNUMBERS_H

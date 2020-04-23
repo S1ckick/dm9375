@@ -24,6 +24,7 @@ IntegerSumWindow::~IntegerSumWindow()
 void IntegerSumWindow::on_back_clicked()
 {
     this->close();
+    ui->warning->clear();
     ui->input1->clear();
     ui->input2->clear();
     emit firstWindow();
@@ -66,4 +67,14 @@ void IntegerSumWindow::on_result_clicked()
     {
        ui->warning->setText("Вы не до конца заполнили поля.");
     }
+}
+
+void IntegerSumWindow::on_known1_clicked()
+{
+    ui->input1->setText(globalNumber.get_biginteger());
+}
+
+void IntegerSumWindow::on_known1_2_clicked()
+{
+    ui->input2->setText(globalNumber.get_biginteger());
 }
