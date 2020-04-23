@@ -323,11 +323,12 @@ Polynom read_pol(std::string polynom1)
     std::vector<std::pair<RationalFraction, int>> mas;
     while (i <= polynom1.length() - 1)
     {
-        if (polynom1[i] == '+' || polynom1[i] == '-')
+        if (polynom1[i] == '+' || polynom1[i] == '-'||i==0)
         {
             std::string numenator;
             if (polynom1[i] == '-')
                 numenator += polynom1[i];
+            if(((i==0)&&((polynom1[0]=='-'||polynom1[0]=='+')))||(i!=0))
             i++;
 
             while (polynom1[i] != '/')

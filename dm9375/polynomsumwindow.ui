@@ -11,29 +11,29 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Действия с двумя многочленами</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="back">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>10</y>
-      <width>112</width>
+      <width>91</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
-     <string>back</string>
+     <string>Назад</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="result_out">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>180</y>
-      <width>351</width>
-      <height>141</height>
+      <x>160</x>
+      <y>190</y>
+      <width>581</width>
+      <height>221</height>
      </rect>
     </property>
     <property name="readOnly">
@@ -43,40 +43,14 @@
    <widget class="QPushButton" name="result">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>130</y>
+      <x>280</x>
+      <y>110</y>
       <width>112</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
-     <string>result</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="input1">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>40</y>
-      <width>201</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="maxLength">
-     <number>999999999</number>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="input2">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>90</y>
-      <width>201</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="maxLength">
-     <number>999999999</number>
+     <string>Результат</string>
     </property>
    </widget>
    <widget class="QComboBox" name="comboBox">
@@ -92,41 +66,67 @@
    <widget class="QLabel" name="warning">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>200</x>
       <y>10</y>
-      <width>221</width>
-      <height>20</height>
+      <width>251</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>40</y>
-      <width>261</width>
-      <height>32</height>
+      <x>201</x>
+      <y>30</y>
+      <width>501</width>
+      <height>33</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Вставить предыдущий результат</string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLineEdit" name="input1">
+       <property name="maxLength">
+        <number>999999999</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Вставить предыдущий результат</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>80</y>
-      <width>251</width>
-      <height>32</height>
+      <x>201</x>
+      <y>70</y>
+      <width>501</width>
+      <height>33</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Вставить предыдущий результат</string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLineEdit" name="input2">
+       <property name="maxLength">
+        <number>999999999</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>Вставить предыдущий результат</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
