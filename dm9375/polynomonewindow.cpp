@@ -21,6 +21,8 @@ PolynomOneWindow::~PolynomOneWindow()
 
 void PolynomOneWindow::on_back_clicked()
 {
+    ui->polynom->clear();
+    ui->warning->clear();
     this->close();
     emit firstWindow();
 }
@@ -36,11 +38,13 @@ void PolynomOneWindow::on_result_clicked()
         {
             Polynom poli_out = DER_P_P(poli);
             ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
+            globalNumber.set_polynom(QString::fromStdString(write_pol(poli_out)));
         }
         else if (ui->comboBox->currentText() == "Простые")
         {
             Polynom poli_out = NMR_P_P(poli);
             ui->result_out->setText(QString::fromStdString(write_pol(poli_out)));
+            globalNumber.set_polynom(QString::fromStdString(write_pol(poli_out)));
         }
         else if (ui->comboBox->currentText() == "Старший коэфф.")
         {
@@ -49,6 +53,7 @@ void PolynomOneWindow::on_result_clicked()
             QString denominator = QString::fromStdString(poli_out.denominator.ToString());
             QString str = numenator + '/' + denominator;
             ui->result_out->setText(str);
+            globalNumber.set_rational(str);
         }
         else if (ui->comboBox->currentText() == "Степень")
         {
@@ -60,4 +65,9 @@ void PolynomOneWindow::on_result_clicked()
     {
         ui->warning->setText("Вы не до конца заполнили поля.");
     }
+}
+
+void PolynomOneWindow::on_pushButton_clicked()
+{
+    ui->polynom->setText(globalNumber.get_polynom());
 }

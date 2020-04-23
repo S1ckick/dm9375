@@ -23,6 +23,9 @@ RationalMainWindow::~RationalMainWindow()
 
 void RationalMainWindow::on_back_clicked()
 {
+    ui->input1->clear();
+    ui->input2->clear();
+    ui->warning->clear();
     this->close();
     emit firstWindow();
 }
@@ -60,4 +63,14 @@ void RationalMainWindow::on_result_clicked()
     {
         ui->warning->setText("Вы не до конца заполнили поля.");
     }
+}
+
+void RationalMainWindow::on_known1_clicked()
+{
+    ui->input1->setText(globalNumber.get_rational());
+}
+
+void RationalMainWindow::on_known1_2_clicked()
+{
+    ui->input2->setText(globalNumber.get_rational());
 }

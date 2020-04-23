@@ -29,6 +29,7 @@ NaturalSumWindow::~NaturalSumWindow()
 void NaturalSumWindow::on_pushButton_clicked()
 {
     this->close();
+    ui->warning->clear();
     ui->natural1->clear();
     ui->natural2->clear();
     emit firstWindow();
@@ -117,5 +118,6 @@ void NaturalSumWindow::on_replace_known_1_clicked()
 
 void NaturalSumWindow::on_replace_known_2_clicked()
 {
+    if(!(ui->comboBox->currentText()=="10^k"))
     ui->natural2->setText(globalNumber.get_bignatural());
 }

@@ -23,7 +23,11 @@ class PolynomSumWindow : public QMainWindow
 
     void on_comboBox_activated(const QString &arg1);
 
-  signals:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+signals:
     void firstWindow();
 
   private:

@@ -21,7 +21,11 @@ class RationalMainWindow : public QMainWindow
 
     void on_result_clicked();
 
-  signals:
+    void on_known1_clicked();
+
+    void on_known1_2_clicked();
+
+signals:
     void firstWindow();
 
   private:

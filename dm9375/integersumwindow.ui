@@ -43,14 +43,14 @@
    <widget class="QPushButton" name="known1">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>320</x>
       <y>30</y>
-      <width>112</width>
+      <width>241</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Вставить предыдщуий результат</string>
     </property>
    </widget>
    <widget class="QPushButton" name="result">
@@ -116,6 +116,19 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="known1_2">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>60</y>
+      <width>241</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Вставить предыдщуий результат</string>
     </property>
    </widget>
   </widget>
