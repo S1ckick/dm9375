@@ -15,7 +15,7 @@ PolynomSumWindow::PolynomSumWindow(QWidget *parent)
     ui->comboBox->addItem("Умножение на число");
     ui->comboBox->addItem("НОД");
     ui->comboBox->addItem("x^k");
-    QValidator *validator = new QRegExpValidator(QRegExp("([+-]\\d+\\/\\d+x\\^\\d+)+"));
+    QValidator *validator = new QRegExpValidator(QRegExp("[-+]?\\d+\\/\\d+x\\^\\d+\(([+-]\\d+\\/\\d+x\\^\\d+)+)?"));
     ui->input1->setValidator(validator);
     ui->input2->setValidator(validator);
 }
@@ -105,30 +105,22 @@ void PolynomSumWindow::on_result_clicked()
 
 void PolynomSumWindow::on_comboBox_activated(const QString &arg1)
 {
+    ui->input1->clear();
+    ui->input2->clear();
+    QValidator *validator = new QRegExpValidator(QRegExp("[-+]?\\d+\\/\\d+x\\^\\d+\(([+-]\\d+\\/\\d+x\\^\\d+)+)?"));
+    ui->input1->setValidator(validator);
     if ((arg1 == "Сложение") || (arg1 == "Вычитание") || (arg1 == "Умножение") ||
         (arg1 == "Частное") || (arg1 == "Остаток") || (arg1 == "НОД"))
     {
-        ui->input1->clear();
-        ui->input2->clear();
-        QValidator *validator = new QRegExpValidator(QRegExp("([+-]\\d+\\/\\d+x\\^\\d+)+"));
-        ui->input1->setValidator(validator);
         ui->input2->setValidator(validator);
     }
     else if (arg1 == "Умножение на число")
     {
-        ui->input1->clear();
-        ui->input2->clear();
-        QValidator *validator = new QRegExpValidator(QRegExp("([+-]\\d+\\/\\d+x\\^\\d+)+"));
-        ui->input1->setValidator(validator);
         QValidator *validator2 = new QRegExpValidator(QRegExp("-?\\d+\\/?\\d+"));
         ui->input2->setValidator(validator2);
     }
     else if (arg1 == "x^k")
     {
-        ui->input1->clear();
-        ui->input2->clear();
-        QValidator *validator = new QRegExpValidator(QRegExp("([+-]\\d+\\/\\d+x\\^\\d+)+"));
-        ui->input1->setValidator(validator);
         QValidator *validator2 = new QRegExpValidator(QRegExp("\\d+"));
         ui->input2->setValidator(validator2);
     }
