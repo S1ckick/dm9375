@@ -130,9 +130,21 @@ Polynom SUB_PP_P(Polynom first, Polynom second)
         coef[i] = SUB_QQ_Q(first.coef[i], second.coef[i - deg]);
 
     i = 0;
+
     while (i < result.degree && !NZER_N_B(coef[i].numenator.number))
     {
         i++;
+    }
+
+    if (i != 0)
+    {
+        for (int j = 0; j <= result.degree - i; j++)
+        {
+            coef[j] = coef[j + i];
+        }
+
+        coef = resize(coef, result.degree + 1 - i, result.degree + 1);
+        result.degree -= i;
     }
 
     result = Polynom(coef, result.degree);
@@ -230,9 +242,11 @@ Polynom MUL_PP_P(Polynom poli1, Polynom poli2)
 //Данилеску Игорь 9375 *
 Polynom DIV_PP_P(Polynom polynom1, Polynom polynom2)
 {
-    Polynom prom, result;
+    Polynom
+        prom,
+        result;
     if (polynom1.degree < polynom2.degree)
-        return polynom1;
+        return Polynom();
     else
     {
         while (DEG_P_N(polynom1) >= DEG_P_N(polynom2))
@@ -241,7 +255,6 @@ Polynom DIV_PP_P(Polynom polynom1, Polynom polynom2)
             prom.coef[0] = DIV_QQ_Q(LED_P_Q(polynom1), LED_P_Q(polynom2));
             prom = MUL_Pxk_P(prom, DEG_P_N(polynom1) - DEG_P_N(polynom2));
             result = ADD_PP_P(result, prom);
-
             polynom1 = SUB_PP_P(polynom1, MUL_PP_P(prom, polynom2));
         }
     }
