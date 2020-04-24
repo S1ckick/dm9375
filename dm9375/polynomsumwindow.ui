@@ -30,8 +30,8 @@
    <widget class="QTextEdit" name="result_out">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>190</y>
+      <x>150</x>
+      <y>300</y>
       <width>581</width>
       <height>221</height>
      </rect>
@@ -43,8 +43,8 @@
    <widget class="QPushButton" name="result">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>110</y>
+      <x>270</x>
+      <y>230</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -57,7 +57,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>50</y>
+      <y>170</y>
       <width>141</width>
       <height>32</height>
      </rect>
@@ -67,7 +67,7 @@
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>10</y>
+      <y>120</y>
       <width>251</width>
       <height>16</height>
      </rect>
@@ -76,11 +76,37 @@
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>30</y>
+      <width>381</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Примеры ввода многочлена: +12/32x^3+45/32x^5-43/24x^0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>50</y>
+      <width>191</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>1/3x^4 или -1/3x^4+3/4x^3</string>
+    </property>
+   </widget>
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>201</x>
-      <y>30</y>
+      <x>200</x>
+      <y>150</y>
       <width>501</width>
       <height>33</height>
      </rect>
@@ -105,8 +131,8 @@
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>201</x>
-      <y>70</y>
+      <x>200</x>
+      <y>190</y>
       <width>501</width>
       <height>33</height>
      </rect>

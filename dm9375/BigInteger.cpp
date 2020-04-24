@@ -77,7 +77,7 @@ int POZ_Z_D(BigInteger biIn)
     {
         return 0;
     }
-    else if (biIn.sign == Sign::minus_sign)
+    else if (biIn.sign == minus_sign)
     {
         return 1;
     }
@@ -88,6 +88,13 @@ int POZ_Z_D(BigInteger biIn)
 }
 
 //Барашкин Дмитрий 9375
+/*
+MUL_ZM_Z
+получает на вход целое число и меняет его знак
+Параметры:
+1)BigInteger biIn-исходное число
+Функция возвращает целое число с противоположным знаком-BigInteger
+*/
 BigInteger MUL_ZM_Z(BigInteger biIn)
 {
     BigInteger res = BigInteger(biIn);
@@ -109,6 +116,7 @@ BigInteger MUL_ZM_Z(BigInteger biIn)
 }
 
 //Шарифуллин Руслан 9375
+//На вход функция получает натуральное число и на выходе выдаёт целое.
 BigInteger TRANS_N_Z(BigNatural b)
 {
     BigInteger bigInt;
@@ -118,6 +126,7 @@ BigInteger TRANS_N_Z(BigNatural b)
 }
 
 //Шарифуллин Руслан 9375
+//На вход функция получает целое число и на выходе выдаёт натуральное.
 BigNatural TRANS_Z_N(BigInteger b)
 {
     BigNatural bigNat;
@@ -126,6 +135,13 @@ BigNatural TRANS_Z_N(BigInteger b)
 }
 
 //Гладилин Сергей 9375
+/*ADD_ZZ_Z
+Возвращает результат сложения двух целых чисел
+Параметры:
+1) BigInteger first - первое целое число
+2) BigInteger second - второе целое число
+Функция возвращает резульат сложения двух целых чисел BigInteger
+*/
 BigInteger ADD_ZZ_Z(BigInteger first, BigInteger second)
 {
     BigInteger result;
@@ -164,6 +180,13 @@ BigInteger ADD_ZZ_Z(BigInteger first, BigInteger second)
 }
 
 //Гладилин Сергей 9375
+/*SUB_ZZ_Z
+Возвращает резульат вычитания двух целых чисел
+Параметры:
+1) BigInteger first - первое целое число
+2) BigInteger second - второе целое число
+Функция возвращает резульата вычитания двух целых чисел BigInteger
+*/
 BigInteger SUB_ZZ_Z(BigInteger first, BigInteger second)
 {
     BigInteger result;
@@ -188,6 +211,11 @@ BigInteger SUB_ZZ_Z(BigInteger first, BigInteger second)
 }
 
 //Покровская Елизавета 9375
+/*      Умножение целых чисел
+   firstInt-первое целое число
+   secondInt-второе целое число
+   функция возвращает целое цисло BigInteger
+ */
 BigInteger MUL_ZZ_Z(BigInteger firstInt, BigInteger secondInt)
 {
     BigInteger answer;
@@ -203,7 +231,7 @@ BigInteger MUL_ZZ_Z(BigInteger firstInt, BigInteger secondInt)
         return MUL_ZM_Z(answer); // если нет, то умножаем на (-1)
 }
 
-//Шагиев Даниил 9375 *
+//Шагиев Даниил 9375
 BigInteger DIV_ZZ_Z(BigInteger first, BigInteger second)
 {
     BigInteger res;
@@ -219,7 +247,7 @@ BigInteger DIV_ZZ_Z(BigInteger first, BigInteger second)
     return res;
 }
 
-//Шагиев Даниил 9375 *
+//Шагиев Даниил 9375
 BigInteger MOD_ZZ_Z(BigInteger first, BigInteger second)
 {
     return SUB_ZZ_Z(first, MUL_ZZ_Z(second, DIV_ZZ_Z(first, second)));

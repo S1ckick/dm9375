@@ -54,13 +54,25 @@ bool INT_Q_B(RationalFraction number)
         return false;
 }
 
-//Степанова Мария 9375 *
+//Степанова Мария 9375
+/*
+Преобразование дробного в целое(если знаменатель равен 1)
+Параметры:
+1) RationalFraction number - дробное число
+Функция возвращает целое число BigInteger
+*/
 BigInteger TRANS_Q_Z(RationalFraction number)
 {
     return number.numenator;
 }
 
-//Степанова Мария 9375 *
+//Степанова Мария 9375
+/*
+Преобразование целого в дробное
+Параметры:
+1) BigInteger number - целое число
+Функция возвращает дробное число RationalFraction
+*/
 RationalFraction TRANS_Z_Q(BigInteger number)
 {
     RationalFraction result;
@@ -69,7 +81,7 @@ RationalFraction TRANS_Z_Q(BigInteger number)
     return result;
 }
 
-//Герасимов Вадим 9375 *
+//Герасимов Вадим 9375
 RationalFraction ADD_QQ_Q(RationalFraction first, RationalFraction second)
 {
     RationalFraction result;
@@ -85,6 +97,14 @@ RationalFraction ADD_QQ_Q(RationalFraction first, RationalFraction second)
 }
 
 //Заречная Юлия 9375
+/*
+SUB_QQ_Q
+Вычитание дробей
+Параметры:
+1)RationalFraction Fraction1 - уменьшаемая дробь
+2)RationalFraction Fraction2 - вычитаемая дробь
+Функция возвращает разность дробей - RationalFraction
+*/
 RationalFraction SUB_QQ_Q(RationalFraction Fraction1, RationalFraction Fraction2)
 {
     RationalFraction Fraction3;
@@ -103,6 +123,12 @@ RationalFraction SUB_QQ_Q(RationalFraction Fraction1, RationalFraction Fraction2
 }
 
 //Покровская Елизавета 9375
+/*
+ Умножение дробей
+ Fraction1- первая дробь
+ Fraction2- вторая дробь
+ Функция возвращает результат умножения двух дробей-дробь RationalFraction
+*/
 RationalFraction MUL_QQ_Q(RationalFraction Fraction1, RationalFraction Fraction2)
 {
     RationalFraction answer;
@@ -116,20 +142,28 @@ RationalFraction MUL_QQ_Q(RationalFraction Fraction1, RationalFraction Fraction2
 }
 
 //Покровская Елизавета 9375
-RationalFraction DIV_QQ_Q(RationalFraction first, RationalFraction second)
+/*
+ Деление дробей
+ Fraction1- первая дробь
+ Fraction2- вторая дробь
+ Функция возвращает результат деления двух дробей-дробь RationalFraction
+*/
+RationalFraction DIV_QQ_Q(RationalFraction Fraction1, RationalFraction Fraction2)
 {
-    RationalFraction result;
-
-    if (!NZER_N_B(second.numenator.number))
-        return result;
-    result.numenator = MUL_ZZ_Z(first.numenator, TRANS_N_Z(second.denominator));
-    result.denominator = MUL_NN_N(first.denominator, TRANS_Z_N(second.numenator));
-    result.numenator.sign =
-        (first.numenator.sign == second.numenator.sign) ? plus_sign : minus_sign;
-
-    result = RED_Q_Q(result);
-
-    return result;
+    RationalFraction answer;
+    BigInteger TRANSNZdenominator2 = TRANS_N_Z(Fraction2.denominator); // преобразуем знаменатель второй дроби из натурального в целый
+        answer.numenator = MUL_ZZ_Z(Fraction1.numenator, TRANSNZdenominator2); // умножаем числитель первой дроби на знаменатель второй ( умножение целых)
+    BigNatural ABSZNnumerator2 = ABS_Z_N(Fraction2.numenator); // находим модуль числителя второй дроби, то есть преобразуем  его в натуральное
+        answer.denominator = MUL_NN_N(Fraction1.denominator, ABSZNnumerator2); // умножаем знаменатель первой дроби на числитель второй( умножение натуральных)
+    if (POZ_Z_D(Fraction2.numenator)==2) // если числитель второй дроби оказался положительным, то находим ответ
+    {
+        return answer;
+        }
+    else
+    {
+        answer.numenator=MUL_ZM_Z(answer.numenator); // если нет, умножаем получившийся числитель на (-1)
+        return answer;
+    }
 }
 /**********************************************************************************************/
 RationalFraction read_frac(std::string rational_str)

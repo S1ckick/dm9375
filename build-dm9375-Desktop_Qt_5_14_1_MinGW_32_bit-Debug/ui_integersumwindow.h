@@ -11,6 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -26,10 +29,13 @@ public:
     QWidget *centralwidget;
     QPushButton *back;
     QTextEdit *result_out;
-    QPushButton *pushButton_2;
+    QPushButton *known1;
     QPushButton *result;
-    QTextEdit *integer1;
-    QTextEdit *integer2;
+    QLineEdit *input2;
+    QLineEdit *input1;
+    QComboBox *comboBox;
+    QLabel *warning;
+    QPushButton *known1_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -47,18 +53,29 @@ public:
         result_out->setObjectName(QString::fromUtf8("result_out"));
         result_out->setGeometry(QRect(120, 240, 251, 74));
         result_out->setReadOnly(true);
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(340, 20, 112, 32));
+        known1 = new QPushButton(centralwidget);
+        known1->setObjectName(QString::fromUtf8("known1"));
+        known1->setGeometry(QRect(320, 30, 241, 32));
         result = new QPushButton(centralwidget);
         result->setObjectName(QString::fromUtf8("result"));
         result->setGeometry(QRect(180, 110, 112, 32));
-        integer1 = new QTextEdit(centralwidget);
-        integer1->setObjectName(QString::fromUtf8("integer1"));
-        integer1->setGeometry(QRect(150, 30, 161, 21));
-        integer2 = new QTextEdit(centralwidget);
-        integer2->setObjectName(QString::fromUtf8("integer2"));
-        integer2->setGeometry(QRect(150, 60, 161, 21));
+        input2 = new QLineEdit(centralwidget);
+        input2->setObjectName(QString::fromUtf8("input2"));
+        input2->setGeometry(QRect(150, 60, 161, 21));
+        input2->setMaxLength(999999999);
+        input1 = new QLineEdit(centralwidget);
+        input1->setObjectName(QString::fromUtf8("input1"));
+        input1->setGeometry(QRect(150, 30, 161, 21));
+        input1->setMaxLength(999999999);
+        comboBox = new QComboBox(centralwidget);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setGeometry(QRect(10, 40, 131, 32));
+        warning = new QLabel(centralwidget);
+        warning->setObjectName(QString::fromUtf8("warning"));
+        warning->setGeometry(QRect(120, 0, 221, 20));
+        known1_2 = new QPushButton(centralwidget);
+        known1_2->setObjectName(QString::fromUtf8("known1_2"));
+        known1_2->setGeometry(QRect(320, 60, 241, 32));
         IntegerSumWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(IntegerSumWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -75,10 +92,13 @@ public:
 
     void retranslateUi(QMainWindow *IntegerSumWindow)
     {
-        IntegerSumWindow->setWindowTitle(QCoreApplication::translate("IntegerSumWindow", "MainWindow", nullptr));
+        IntegerSumWindow->setWindowTitle(QCoreApplication::translate("IntegerSumWindow", "\320\246\320\265\320\273\321\213\320\265 \321\207\320\270\321\201\320\273\320\260", nullptr));
         back->setText(QCoreApplication::translate("IntegerSumWindow", "back", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("IntegerSumWindow", "PushButton", nullptr));
+        known1->setText(QCoreApplication::translate("IntegerSumWindow", "\320\222\321\201\321\202\320\260\320\262\320\270\321\202\321\214 \320\277\321\200\320\265\320\264\321\213\320\264\321\211\321\203\320\270\320\271 \321\200\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202", nullptr));
         result->setText(QCoreApplication::translate("IntegerSumWindow", "result", nullptr));
+        input1->setInputMask(QString());
+        warning->setText(QString());
+        known1_2->setText(QCoreApplication::translate("IntegerSumWindow", "\320\222\321\201\321\202\320\260\320\262\320\270\321\202\321\214 \320\277\321\200\320\265\320\264\321\213\320\264\321\211\321\203\320\270\320\271 \321\200\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202", nullptr));
     } // retranslateUi
 
 };

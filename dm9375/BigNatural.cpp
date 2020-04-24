@@ -111,6 +111,7 @@ int COM_NN_D(BigNatural a, BigNatural b)
 }
 
 //Шарифуллин Руслан 9375
+//На вход функция получает число, выводи “false”, если число является 0, иначе “true”.
 bool NZER_N_B(BigNatural b)
 {
     if ((b.size == 1) && (b.coef[0] == 0))
@@ -155,6 +156,7 @@ BigNatural ADD_1N_N(BigNatural number)
 }
 
 //Кузнецова Екатерина 9375 *
+//Сложение натуральных чисел
 BigNatural ADD_NN_N(BigNatural first, BigNatural second)
 {
     BigNatural result;
@@ -381,6 +383,14 @@ BigNatural DIV_NN_N(BigNatural first, BigNatural second)
 }
 
 //Коновалова Алина 9375
+/*MOD_NN_N
+Возвращает остаток от деления большего натурального числа на меньшее
+или равное натуральное с остатком(делитель отличен от нуля)
+Параметры:
+1. BigNatural first - первое натуральное число
+2. BigNatural second - второе натуральное число
+Функция возвращает остаток от деления - BigNatural
+*/
 BigNatural MOD_NN_N(BigNatural first, BigNatural second)
 {
     BigNatural res;
@@ -395,6 +405,13 @@ BigNatural MOD_NN_N(BigNatural first, BigNatural second)
 }
 
 //Коновалова Алина 9375
+/*GCF_NN_N
+Возвращает НОД натуральных чисел
+Параметры:
+1. BigNatural first - первое натуральное число
+2. BigNatural second - второе натуральное число
+Функция возвращает НОД - BigNatural
+*/
 BigNatural GCF_NN_N(BigNatural first, BigNatural second)
 {
     BigNatural ost;
@@ -404,19 +421,20 @@ BigNatural GCF_NN_N(BigNatural first, BigNatural second)
         first = second;
         second = ost;
     }
-
     return first;
 }
 
 //Коновалова Алина 9375
+/*LCM_NN_N
+Возвращает НОК натуральных чисел
+Параметры:
+1. BigNatural first - первое натуральное число
+2. BigNatural second - второе натуральное число
+Функция возвращает НОК - BigNatural
+*/
 BigNatural LCM_NN_N(BigNatural first, BigNatural second)
 {
-    BigNatural result;
-    BigNatural prois;
-    BigNatural NOD;
-
-    NOD = GCF_NN_N(first, second);
-    prois = MUL_NN_N(first, second);
-    result = DIV_NN_N(prois, NOD);
-    return result;
+    BigNatural res;
+    res = DIV_NN_N((MUL_NN_N(first, second)),(GCF_NN_N(first, second)));
+    return res;
 }

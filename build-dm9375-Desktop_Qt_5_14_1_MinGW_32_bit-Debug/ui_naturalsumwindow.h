@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -27,14 +28,15 @@ class Ui_NaturalSumWindow
 public:
     QWidget *centralwidget;
     QPushButton *pushButton;
-    QTextEdit *natural1;
-    QTextEdit *natural2;
     QPushButton *result;
     QTextEdit *result_out;
     QLabel *label;
     QPushButton *replace_known_1;
     QPushButton *replace_known_2;
     QComboBox *comboBox;
+    QLineEdit *natural1;
+    QLineEdit *natural2;
+    QLabel *warning;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -48,13 +50,6 @@ public:
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(20, 20, 61, 32));
-        natural1 = new QTextEdit(centralwidget);
-        natural1->setObjectName(QString::fromUtf8("natural1"));
-        natural1->setGeometry(QRect(250, 30, 281, 21));
-        natural1->setOverwriteMode(false);
-        natural2 = new QTextEdit(centralwidget);
-        natural2->setObjectName(QString::fromUtf8("natural2"));
-        natural2->setGeometry(QRect(250, 60, 281, 21));
         result = new QPushButton(centralwidget);
         result->setObjectName(QString::fromUtf8("result"));
         result->setGeometry(QRect(320, 100, 112, 32));
@@ -74,10 +69,21 @@ public:
         comboBox = new QComboBox(centralwidget);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
         comboBox->setGeometry(QRect(102, 40, 141, 22));
+        natural1 = new QLineEdit(centralwidget);
+        natural1->setObjectName(QString::fromUtf8("natural1"));
+        natural1->setGeometry(QRect(250, 30, 281, 21));
+        natural1->setMaxLength(999999999);
+        natural2 = new QLineEdit(centralwidget);
+        natural2->setObjectName(QString::fromUtf8("natural2"));
+        natural2->setGeometry(QRect(250, 60, 281, 21));
+        natural2->setMaxLength(999999999);
+        warning = new QLabel(centralwidget);
+        warning->setObjectName(QString::fromUtf8("warning"));
+        warning->setGeometry(QRect(270, 0, 221, 20));
         NaturalSumWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(NaturalSumWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 800, 22));
         NaturalSumWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(NaturalSumWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -90,12 +96,13 @@ public:
 
     void retranslateUi(QMainWindow *NaturalSumWindow)
     {
-        NaturalSumWindow->setWindowTitle(QCoreApplication::translate("NaturalSumWindow", "MainWindow", nullptr));
+        NaturalSumWindow->setWindowTitle(QCoreApplication::translate("NaturalSumWindow", "\320\235\320\260\321\202\321\203\321\200\320\260\320\273\321\214\320\275\321\213\320\265 \321\207\320\270\321\201\320\273\320\260", nullptr));
         pushButton->setText(QCoreApplication::translate("NaturalSumWindow", "back", nullptr));
         result->setText(QCoreApplication::translate("NaturalSumWindow", "result", nullptr));
         label->setText(QCoreApplication::translate("NaturalSumWindow", "\320\237\321\200\320\265\320\264\321\213\320\264\321\203\321\211\320\270\320\271 \321\200\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202:", nullptr));
         replace_known_1->setText(QCoreApplication::translate("NaturalSumWindow", "\320\222\321\201\321\202\320\260\320\262\320\270\321\202\321\214 \320\277\321\200\320\265\320\264\321\213\320\264\321\213\320\264\321\203\321\211\320\270\320\271 \321\200\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202", nullptr));
         replace_known_2->setText(QCoreApplication::translate("NaturalSumWindow", "\320\222\321\201\321\202\320\260\320\262\320\270\321\202\321\214 \320\277\321\200\320\265\320\264\321\213\320\264\321\203\321\211\320\270\320\271 \321\200\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202", nullptr));
+        warning->setText(QString());
     } // retranslateUi
 
 };
