@@ -204,7 +204,7 @@ Polynom MOD_PP_P(Polynom polynom1, Polynom polynom2);
 //Фатеева Анастасия 9375 *
 Polynom GCF_PP_P(Polynom first, Polynom second);
 
-//Бухтияров Марат 9375 *
+//Бухтияров Марат 9375
 Polynom DER_P_P(Polynom polynom);
 
 //Фатеева Анастасия 9375 *
