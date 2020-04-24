@@ -103,8 +103,55 @@ Polynom ADD_PP_P(Polynom first, Polynom second)
 //Заречная Юлия 9375
 Polynom SUB_PP_P(Polynom first, Polynom second)
 {
-    Polynom a;
-    return a;
+    int i, deg;
+    Polynom result;
+    RationalFraction current;
+    RationalFraction *coef;
+
+    if (first.degree < second.degree)
+    {
+        result = SUB_PP_P(second, first);
+
+        for (int i = 0; i <= result.degree; i++)
+            result.coef[i].numenator = MUL_ZM_Z(result.coef[i].numenator);
+
+        return result;
+    }
+
+    coef = new RationalFraction[first.degree + 1];
+
+    result.degree = first.degree;
+
+    deg = first.degree - second.degree;
+    for (i = 0; i < deg; ++i)
+        coef[i] = first.coef[i];
+
+    for (i = deg; i <= first.degree; i++)
+        coef[i] = SUB_QQ_Q(first.coef[i], second.coef[i - deg]);
+
+    i = 0;
+
+    while (i < result.degree && !NZER_N_B(coef[i].numenator.number))
+    {
+        i++;
+    }
+
+    if (i != 0)
+    {
+        for (int j = 0; j <= result.degree - i; j++)
+        {
+            coef[j] = coef[j + i];
+        }
+
+        coef = resize(coef, result.degree + 1 - i, result.degree + 1);
+        result.degree -= i;
+    }
+
+    result = Polynom(coef, result.degree);
+
+    delete[] coef;
+
+    return result;
 }
 
 //Данилеску Игорь 9375
