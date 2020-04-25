@@ -1,5 +1,6 @@
 #include "header.h"
 using namespace std;
+#include<QDebug>
 Polynom::Polynom()
 {
     coef = new RationalFraction[1];
@@ -186,7 +187,7 @@ RationalFraction LED_P_Q(Polynom polynom)
 }
 
 //Бухтияров Марат 9375
-int DEG_P_N(Polynom inputValue)
+int  DEG_P_N(Polynom inputValue)
 {
     //Фуункция возвращающая значение степени многочлена
     int currentCoef = 0;
@@ -194,32 +195,26 @@ int DEG_P_N(Polynom inputValue)
     {
         //цикл ищет первый ненулевой коэффициент при наибольшей степени
         if (inputValue.coef[currentCoef].numenator.number.coef != 0)
-            return inputValue.degree - currentCoef; //Если коэффициент был найден, то возвращает
-                                                    //значение соответствующей ему степени
+            return inputValue.degree - currentCoef;//Если коэффициент был найден, то возвращает значение соответствующей ему степени
         ++currentCoef;
     }
     return -1; //вернёт это значение, если все коэффициенты равны 0,  включая свободный член
 }
 
 //Заречная Юлия 9375 *
-Polynom FAC_P_Q(Polynom polynom)
+RationalFraction FAC_P_Q(Polynom poli)
 {
-    BigNatural NOD;
-    BigNatural NOK;
-    RationalFraction NN;
-
-    NOD = TRANS_Z_N(polynom.coef[0].numenator);
-    NOK = polynom.coef[0].denominator;
-
-    for (int i = 0; i <= polynom.degree; i++)
+    BigNatural LCM = LCM_NN_N(poli.coef[0].denominator, poli.coef[1].denominator);//НОК знаменателей коэфф. при 0 и 1 степени
+    BigNatural GCF = GCF_NN_N(TRANS_Z_N(poli.coef[0].numenator), TRANS_Z_N(poli.coef[1].numenator));//НОД числителей коэфф. при 0 и 1 степени
+    for (int i = 2; i <= poli.degree; ++i)//Общий НОК и НОД
     {
-        NOD = GCF_NN_N(NOD, TRANS_Z_N(polynom.coef[i].numenator));
-        NOK = LCM_NN_N(NOK, polynom.coef[i].denominator);
+        LCM = LCM_NN_N(LCM, poli.coef[i].denominator);
+        GCF = GCF_NN_N(GCF, TRANS_Z_N(poli.coef[i].numenator));
     }
-    NN.numenator = TRANS_N_Z(NOK);
-    NN.denominator = NOD;
-
-    return MUL_PQ_P(polynom, NN);
+    RationalFraction Fraction;
+    Fraction.denominator = LCM;
+    Fraction.numenator = TRANS_N_Z(GCF);
+    return Fraction;
 }
 
 //Данилеску Игорь 9375
@@ -249,10 +244,20 @@ Polynom DIV_PP_P(Polynom polynom1, Polynom polynom2)
         return Polynom();
     else
     {
+        if(DEG_P_N(polynom2)!=0)
         while (DEG_P_N(polynom1) >= DEG_P_N(polynom2))
         {
             prom = Polynom();
             prom.coef[0] = DIV_QQ_Q(LED_P_Q(polynom1), LED_P_Q(polynom2));
+            prom = MUL_Pxk_P(prom, DEG_P_N(polynom1) - DEG_P_N(polynom2));
+            result = ADD_PP_P(result, prom);
+            polynom1 = SUB_PP_P(polynom1, MUL_PP_P(prom, polynom2));
+        }
+        else
+        {
+            prom = Polynom();
+            prom.coef[0]=DIV_QQ_Q(LED_P_Q(polynom1), LED_P_Q(polynom2));
+            if (DEG_P_N(polynom1)!=0)
             prom = MUL_Pxk_P(prom, DEG_P_N(polynom1) - DEG_P_N(polynom2));
             result = ADD_PP_P(result, prom);
             polynom1 = SUB_PP_P(polynom1, MUL_PP_P(prom, polynom2));
@@ -275,12 +280,13 @@ Polynom MOD_PP_P(Polynom polynom1, Polynom polynom2)
 //Фатеева Анастасия 9375 *
 Polynom GCF_PP_P(Polynom first, Polynom second)
 {
-    Polynom ost;
+    Polynom r;
+
     while (DEG_P_N(second) != 0 || NZER_N_B(TRANS_Z_N(second.coef[0].numenator)))
     {
-        ost = MOD_PP_P(first, second);
+        r = MOD_PP_P(first, second);
         first = second;
-        second = ost;
+        second = r;
     }
     return first;
 }
@@ -319,7 +325,7 @@ Polynom NMR_P_P(Polynom polynom)
     nod = GCF_PP_P(polynom, der);
     result = DIV_PP_P(polynom, nod);
 
-    result = FAC_P_Q(result);
+    //result = FAC_P_Q(result);
 
     return result;
 }
@@ -380,6 +386,11 @@ Polynom read_pol(std::string polynom1)
 std::string write_pol(Polynom poli)
 {
     std::string str_pol;
+    if(poli.degree==0 && poli.coef[0].numenator.number.size==1 && poli.coef[0].numenator.number.coef[0]==0)
+    {
+        str_pol="0/1x^0";
+        return str_pol;
+    }
     for(int i=0;i<=poli.degree;i++)
     {
         if (!(poli.coef[i].numenator.number.size==1 && poli.coef[i].numenator.number.coef[0]==0))

@@ -69,12 +69,12 @@ void IntegerSumWindow::on_result_clicked()
     }
 }
 
-void IntegerSumWindow::on_known1_clicked()
+void IntegerSumWindow::on_pushButton_clicked()
 {
     ui->input1->setText(globalNumber.get_biginteger());
 }
 
-void IntegerSumWindow::on_known1_2_clicked()
+void IntegerSumWindow::on_pushButton_2_clicked()
 {
     ui->input2->setText(globalNumber.get_biginteger());
 }
