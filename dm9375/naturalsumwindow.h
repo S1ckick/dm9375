@@ -20,11 +20,11 @@ class NaturalSumWindow : public QMainWindow
     void on_pushButton_clicked();
     void on_result_clicked();
 
-    void on_replace_known_1_clicked();
+    void on_pushButton_2_clicked();
 
-    void on_replace_known_2_clicked();
+    void on_pushButton_3_clicked();
 
-  private:
+private:
     Ui::NaturalSumWindow *ui;
 };
 

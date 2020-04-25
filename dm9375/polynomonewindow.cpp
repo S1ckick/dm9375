@@ -10,7 +10,8 @@ PolynomOneWindow::PolynomOneWindow(QWidget *parent)
     ui->comboBox->addItem("Простые");
     ui->comboBox->addItem("Старший коэфф.");
     ui->comboBox->addItem("Степень");
-    QValidator *validator = new QRegExpValidator(QRegExp("([+-]\\d+\\/\\d+x\\^\\d+)+"));
+    ui->comboBox->addItem("НОД и НОК");
+    QValidator *validator = new QRegExpValidator(QRegExp("[-+]?\\d+\\/\\d+x\\^\\d+\(([+-]\\d+\\/\\d+x\\^\\d+)+)?"));
     ui->polynom->setValidator(validator);
 }
 
@@ -60,6 +61,11 @@ void PolynomOneWindow::on_result_clicked()
             unsigned int degree = DEG_P_N(poli);
             ui->result_out->setText(QString::number(degree));
         }
+        else if (ui->comboBox->currentText() == "НОД и НОК")
+        {
+            RationalFraction degree = FAC_P_Q(poli);
+            ui->result_out->setText(QString::fromStdString(write_frac(degree)));
+        }
     }
     else
     {
@@ -67,7 +73,7 @@ void PolynomOneWindow::on_result_clicked()
     }
 }
 
-void PolynomOneWindow::on_pushButton_clicked()
+void PolynomOneWindow::on_pushButton_3_clicked()
 {
     ui->polynom->setText(globalNumber.get_polynom());
 }

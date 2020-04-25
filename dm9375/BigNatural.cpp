@@ -348,38 +348,44 @@ int DIV_NN_Dk(BigNatural first, BigNatural second, int tenDegree)
     return i;
 }
 
-//Кочешков Александр 9375 *
+//Кочешков Александр 9375
+/*
+DIV_NN_N
+Частное от деления большего натурального числа на меньшее или равное натуральное с остатком(делитель отличен от нуля)
+Параметры :
+1) BigNatural first - числитель.
+2) BigNatural second - знаменатель.
+Функция возвращает частное от деления BigNatural.
+*/
 BigNatural DIV_NN_N(BigNatural first, BigNatural second)
 {
-    int k = 0;
-    BigNatural res;
-    int *coef = nullptr;
-    int size = first.size - second.size;
-    if (!NZER_N_B(second))
-        return BigNatural();
-    else
-    {
-        if (COM_NN_D(first, second) == 0)
-            return BigNatural(1);
 
-        else if (COM_NN_D(first, second) == 1)
-        {
-            return BigNatural();
-        }
-        else
-            coef = new int[size + 1];
-        for (k = size; k >= 0; k--)
-        {
-            coef[k] = DIV_NN_Dk(first, second, k);
-            first = SUB_NDN_N(first, MUL_Nk_N(second, k), coef[k]);
-        }
-    }
-    k = size;
-    while ((k > 0) && (coef[k] == 0))
-        k--;
-    res = BigNatural(coef, k + 1);
-    delete[] coef;
-    return res;
+    if (COM_NN_D(first, second) == 0)
+return BigNatural(1);
+
+    if (COM_NN_D(first, second) == 1)
+return BigNatural();
+
+    if (NZER_N_B(second) == 0)
+return BigNatural();
+
+    BigNatural result;
+int tenDegree = first.size;
+
+    for (;tenDegree >= 0;tenDegree--)
+{
+while ((COM_NN_D(first, MUL_Nk_N(second, tenDegree)) == 1) && (tenDegree > 0))
+{
+tenDegree--;
+}
+
+        int divisorNumber = DIV_NN_Dk(first, second, tenDegree);
+
+        result = ADD_NN_N(MUL_Nk_N(BigNatural(divisorNumber), tenDegree), result);
+
+        first = SUB_NN_N(first, MUL_Nk_N(MUL_ND_N(second, divisorNumber), tenDegree));
+}
+return result;
 }
 
 //Коновалова Алина 9375

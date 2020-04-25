@@ -64,13 +64,12 @@ void RationalMainWindow::on_result_clicked()
         ui->warning->setText("Вы не до конца заполнили поля.");
     }
 }
-
-void RationalMainWindow::on_known1_clicked()
+void RationalMainWindow::on_pushButton_clicked()
 {
     ui->input1->setText(globalNumber.get_rational());
 }
 
-void RationalMainWindow::on_known1_2_clicked()
+void RationalMainWindow::on_pushButton_2_clicked()
 {
     ui->input2->setText(globalNumber.get_rational());
 }

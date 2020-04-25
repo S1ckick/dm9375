@@ -190,7 +190,7 @@ RationalFraction LED_P_Q(Polynom polynom);
 int DEG_P_N(Polynom inputValue);
 
 //Заречная Юлия 9375 *
-Polynom FAC_P_Q(Polynom polynom);
+RationalFraction FAC_P_Q(Polynom polynom);
 
 //Данилеску Игорь 9375
 Polynom MUL_PP_P(Polynom poli1, Polynom poli2);

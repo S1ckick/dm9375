@@ -17,8 +17,8 @@ NaturalSumWindow::NaturalSumWindow(QWidget *parent)
     ui->comboBox->addItem("НОК");
     ui->comboBox->addItem("10^k");
     QValidator *validator = new QRegExpValidator(QRegExp("\\d+"));
-    ui->natural1->setValidator(validator);
-    ui->natural2->setValidator(validator);
+    ui->input1->setValidator(validator);
+    ui->input2->setValidator(validator);
 }
 
 NaturalSumWindow::~NaturalSumWindow()
@@ -30,17 +30,17 @@ void NaturalSumWindow::on_pushButton_clicked()
 {
     this->close();
     ui->warning->clear();
-    ui->natural1->clear();
-    ui->natural2->clear();
+    ui->input1->clear();
+    ui->input2->clear();
     emit firstWindow();
 }
 
 void NaturalSumWindow::on_result_clicked()
 {
-    if ((ui->natural1->hasAcceptableInput()) && (ui->natural2->hasAcceptableInput()))
+    if ((ui->input1->hasAcceptableInput()) && (ui->input2->hasAcceptableInput()))
     {
         ui->warning->clear();
-        std::string natural1 = ui->natural1->text().toStdString();
+        std::string natural1 = ui->input1->text().toStdString();
         BigNatural BigN1(natural1);
         if ((ui->comboBox->currentText() == "Сложение") ||
             (ui->comboBox->currentText() == "Вычитание") ||
@@ -49,7 +49,7 @@ void NaturalSumWindow::on_result_clicked()
             (ui->comboBox->currentText() == "Остаток") || (ui->comboBox->currentText() == "НОД") ||
             (ui->comboBox->currentText() == "НОК"))
         {
-            std::string natural2 = ui->natural2->text().toStdString();
+            std::string natural2 = ui->input2->text().toStdString();
             BigNatural BigN2(natural2);
             if (ui->comboBox->currentText() == "Сложение")
             {
@@ -98,7 +98,7 @@ void NaturalSumWindow::on_result_clicked()
         {
             if (ui->comboBox->currentText() == "10^k")
             {
-                int tenDegree = ui->natural2->text().toInt();
+                int tenDegree = ui->input2->text().toInt();
                 QString res = QString::fromStdString(MUL_Nk_N(BigN1, tenDegree).ToString());
                 globalNumber.set_bignatural(res);
                 ui->result_out->setText(res);
@@ -111,13 +111,14 @@ void NaturalSumWindow::on_result_clicked()
     }
 }
 
-void NaturalSumWindow::on_replace_known_1_clicked()
+
+void NaturalSumWindow::on_pushButton_2_clicked()
 {
-    ui->natural1->setText(globalNumber.get_bignatural());
+    ui->input1->setText(globalNumber.get_bignatural());
 }
 
-void NaturalSumWindow::on_replace_known_2_clicked()
+void NaturalSumWindow::on_pushButton_3_clicked()
 {
     if(!(ui->comboBox->currentText()=="10^k"))
-    ui->natural2->setText(globalNumber.get_bignatural());
+        ui->input2->setText(globalNumber.get_bignatural());
 }

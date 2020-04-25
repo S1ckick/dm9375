@@ -20,10 +20,9 @@ class RationalMainWindow : public QMainWindow
     void on_back_clicked();
 
     void on_result_clicked();
+    void on_pushButton_clicked();
 
-    void on_known1_clicked();
-
-    void on_known1_2_clicked();
+    void on_pushButton_2_clicked();
 
 signals:
     void firstWindow();
