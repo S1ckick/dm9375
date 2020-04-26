@@ -201,7 +201,7 @@ int  DEG_P_N(Polynom inputValue)
     return -1; //вернёт это значение, если все коэффициенты равны 0,  включая свободный член
 }
 
-//Заречная Юлия 9375 *
+//Заречная Юлия 9375
 RationalFraction FAC_P_Q(Polynom poli)
 {
     BigNatural LCM = LCM_NN_N(poli.coef[0].denominator, poli.coef[1].denominator);//НОК знаменателей коэфф. при 0 и 1 степени
@@ -267,7 +267,7 @@ Polynom DIV_PP_P(Polynom polynom1, Polynom polynom2)
     return result;
 }
 
-//Фатеева Анастасия 9375 *
+//Фатеева Анастасия 9375
 Polynom MOD_PP_P(Polynom polynom1, Polynom polynom2)
 {
     Polynom result;
@@ -277,7 +277,7 @@ Polynom MOD_PP_P(Polynom polynom1, Polynom polynom2)
     return result;
 }
 
-//Фатеева Анастасия 9375 *
+//Фатеева Анастасия 9375
 Polynom GCF_PP_P(Polynom first, Polynom second)
 {
     Polynom r;
@@ -321,12 +321,8 @@ Polynom NMR_P_P(Polynom polynom)
     Polynom result;
     Polynom nod;
     Polynom der = DER_P_P(polynom);
-
     nod = GCF_PP_P(polynom, der);
     result = DIV_PP_P(polynom, nod);
-
-    //result = FAC_P_Q(result);
-
     return result;
 }
 

@@ -60,11 +60,13 @@ void PolynomOneWindow::on_result_clicked()
         {
             unsigned int degree = DEG_P_N(poli);
             ui->result_out->setText(QString::number(degree));
+            globalNumber.set_bignatural(QString::number(degree));
         }
         else if (ui->comboBox->currentText() == "НОД и НОК")
         {
             RationalFraction degree = FAC_P_Q(poli);
             ui->result_out->setText(QString::fromStdString(write_frac(degree)));
+            globalNumber.set_rational(QString::fromStdString(write_frac(degree)));
         }
     }
     else
