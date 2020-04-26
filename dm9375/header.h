@@ -78,10 +78,10 @@ bool NZER_N_B(BigNatural b);
 //Зубцов Михаил 9375
 BigNatural ADD_1N_N(BigNatural number);
 
-//Кузнецова Екатерина 9375 *
+//Кузнецова Екатерина 9375
 BigNatural ADD_NN_N(BigNatural first, BigNatural second);
 
-//Кузнецова Екатерина 9375 *
+//Кузнецова Екатерина 9375
 BigNatural SUB_NN_N(BigNatural first, BigNatural second);
 
 //Зубцов Михаил 9375
@@ -99,16 +99,16 @@ BigNatural SUB_NDN_N(BigNatural first, BigNatural second, int factor);
 //Хаит Даниил 9375
 int DIV_NN_Dk(BigNatural first, BigNatural second, int tenDegree);
 
-//Кочешков Александр 9375 *
+//Кочешков Александр 9375
 BigNatural DIV_NN_N(BigNatural first, BigNatural second);
 
-//Коновалова Алина 9375 *
+//Коновалова Алина 9375
 BigNatural MOD_NN_N(BigNatural first, BigNatural second);
 
-//Коновалова Алина 9375 *
+//Коновалова Алина 9375
 BigNatural GCF_NN_N(BigNatural first, BigNatural second);
 
-//Коновалова Алина 9375 *
+//Коновалова Алина 9375
 BigNatural LCM_NN_N(BigNatural first, BigNatural second);
 
 /*************************BigInteger********************************/
@@ -137,27 +137,27 @@ BigInteger SUB_ZZ_Z(BigInteger first, BigInteger second);
 //Покровская Елизавета 9375
 BigInteger MUL_ZZ_Z(BigInteger firstInt, BigInteger secondInt);
 
-//Шагиев Даниил 9375 *
+//Шагиев Даниил 9375
 BigInteger DIV_ZZ_Z(BigInteger first, BigInteger second);
 
-//Шагиев Даниил 9375 *
+//Шагиев Даниил 9375
 BigInteger MOD_ZZ_Z(BigInteger first, BigInteger second);
 
 /*************************RationalFraction********************************/
 
-//Герасимов Вадим 9375 *
+//Герасимов Вадим 9375
 RationalFraction RED_Q_Q(RationalFraction number);
 
-//Кочешков Александр 9375 *
+//Кочешков Александр 9375
 bool INT_Q_B(RationalFraction number);
 
-//Степанова Мария 9375*
+//Степанова Мария 9375
 BigInteger TRANS_Q_Z(RationalFraction number);
 
-//Степанова Мария 9375 *
+//Степанова Мария 9375
 RationalFraction TRANS_Z_Q(BigInteger number);
 
-//Герасимов Вадим 9375 *
+//Герасимов Вадим 9375
 RationalFraction ADD_QQ_Q(RationalFraction first, RationalFraction second);
 
 //Заречная Юлия 9375
@@ -166,15 +166,15 @@ RationalFraction SUB_QQ_Q(RationalFraction Fraction1, RationalFraction Fraction2
 //Покровская Елизавета 9375
 RationalFraction MUL_QQ_Q(RationalFraction Fraction1, RationalFraction Fraction2);
 
-//Покровская Елизавета 9375*
+//Покровская Елизавета 9375
 RationalFraction DIV_QQ_Q(RationalFraction first, RationalFraction second);
 
 /*************************Polynom********************************/
 
-//Герасимов Вадим 9375 *
+//Герасимов Вадим 9375
 Polynom ADD_PP_P(Polynom first, Polynom second);
 
-//Герасимов Вадим 9375 *
+//Герасимов Вадим 9375
 Polynom SUB_PP_P(Polynom first, Polynom second);
 
 //Данилеску Игорь 9375
@@ -183,31 +183,31 @@ Polynom MUL_PQ_P(Polynom poli, RationalFraction frank);
 //Бухтияров Марат 9375
 Polynom MUL_Pxk_P(Polynom inputValue, int changeDegree);
 
-//Степанова Мария 9375 *
+//Степанова Мария 9375
 RationalFraction LED_P_Q(Polynom polynom);
 
 //Бухтияров Марат 9375
 int DEG_P_N(Polynom inputValue);
 
-//Заречная Юлия 9375 *
+//Заречная Юлия 9375
 RationalFraction FAC_P_Q(Polynom polynom);
 
 //Данилеску Игорь 9375
 Polynom MUL_PP_P(Polynom poli1, Polynom poli2);
 
-//Данилеску Игорь 9375 *
+//Данилеску Игорь 9375
 Polynom DIV_PP_P(Polynom polynom1, Polynom polynom2);
 
-//Фатеева Анастасия 9375 *
+//Фатеева Анастасия 9375
 Polynom MOD_PP_P(Polynom polynom1, Polynom polynom2);
 
-//Фатеева Анастасия 9375 *
+//Фатеева Анастасия 9375
 Polynom GCF_PP_P(Polynom first, Polynom second);
 
 //Бухтияров Марат 9375
 Polynom DER_P_P(Polynom polynom);
 
-//Фатеева Анастасия 9375 *
+//Фатеева Анастасия 9375
 Polynom NMR_P_P(Polynom polynom);
 /*******************************************************/
 bool sortbysec(const std::pair<RationalFraction,int> &a,
