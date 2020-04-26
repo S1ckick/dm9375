@@ -180,7 +180,7 @@ Polynom MUL_Pxk_P(Polynom inputValue, int changeDegree)
     return inputValue; //возвращает из функции новый многочлен
 }
 
-//Степанова Мария 9375 *
+//Степанова Мария 9375
 RationalFraction LED_P_Q(Polynom polynom)
 {
     return polynom.coef[0];
@@ -315,7 +315,7 @@ Polynom DER_P_P(Polynom polynom)
     return result;
 }
 
-//Фатеева Анастасия 9375 *
+//Фатеева Анастасия 9375
 Polynom NMR_P_P(Polynom polynom)
 {
     Polynom result;

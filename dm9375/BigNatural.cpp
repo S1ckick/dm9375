@@ -155,7 +155,7 @@ BigNatural ADD_1N_N(BigNatural number)
     return result;
 }
 
-//Кузнецова Екатерина 9375 *
+//Кузнецова Екатерина 9375
 //Сложение натуральных чисел
 BigNatural ADD_NN_N(BigNatural first, BigNatural second)
 {
