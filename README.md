@@ -1,5 +1,4 @@
-## Коллоквиум по дискретной математике
-<img src="https://cdn.icon-icons.com/icons2/2300/PNG/512/virus_covid_corona_coronavirus_cell_coronavirus_icon_141661.png" width="32" height="32"/>
+## <img src="https://cdn.icon-icons.com/icons2/2300/PNG/512/virus_covid_corona_coronavirus_cell_coronavirus_icon_141661.png" width="32" height="32"/> Коллоквиум по дискретной математике
 # Организаторы: 
 - Архитектор - Субботин Максим
 - Помощник Архитектора - Данилеску Игорь
