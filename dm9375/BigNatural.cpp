@@ -323,6 +323,10 @@ BigNatural MUL_NN_N(BigNatural first, BigNatural second)
 }
 
 //Хаит Даниил 9375
+/*
+Назначение: Вычитание из натурального другого натурального,
+умноженного на цифру для случая с неотрицательным результатом
+*/
 BigNatural SUB_NDN_N(BigNatural first, BigNatural second, int factor)
 {
     if (COM_NN_D(first, second) == 1)
@@ -332,6 +336,10 @@ BigNatural SUB_NDN_N(BigNatural first, BigNatural second, int factor)
 }
 
 //Хаит Даниил 9375
+/*
+Назначение: Вычисление первой цифры деления большего натурального на меньшее,
+домноженное на 10^k,где k - номер позиции этой цифры (номер считается с нуля)
+*/
 int DIV_NN_Dk(BigNatural first, BigNatural second, int tenDegree)
 {
     int i = 0;
