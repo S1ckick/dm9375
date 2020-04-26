@@ -44,7 +44,7 @@ RationalFraction RED_Q_Q(RationalFraction number)
     return result;
 }
 
-//Кочешков Александр 9375 *
+//Кочешков Александр 9375
 bool INT_Q_B(RationalFraction number)
 {
     number = RED_Q_Q(number);
