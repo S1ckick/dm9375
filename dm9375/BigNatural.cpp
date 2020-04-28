@@ -90,7 +90,7 @@ int COM_NN_D(BigNatural a, BigNatural b)
         }
         else
         {
-            for (int i = a.size - 1; i >= 0; --i)
+            for (int i = a.size - 1; i >= 0; i--)
             {
                 if (a.coef[i] > b.coef[i])
                 {
@@ -99,10 +99,6 @@ int COM_NN_D(BigNatural a, BigNatural b)
                 else if (b.coef[i] > a.coef[i])
                 {
                     return 1;
-                }
-                else
-                {
-                    continue;
                 }
             }
         }
@@ -141,16 +137,12 @@ BigNatural ADD_1N_N(BigNatural number)
         }
         if (counter == result.size)
         {
-            int *newResult = new int[result.size + 1];
-            memcpy(newResult, result.coef, result.size * sizeof(int));
+            result.coef = resize(result.coef, result.size + 1, result.size);
             result.size++;
-            result.coef = newResult;
             result.coef[result.size - 1] = 1;
         }
         else
-        {
             result.coef[counter]++;
-        }
     }
     return result;
 }
@@ -182,20 +174,13 @@ BigNatural ADD_NN_N(BigNatural first, BigNatural second)
 
     if (tmp)
     {
-        int *newResult = new int[result.size + 1];
-        memcpy(newResult, resCoef, first.size * sizeof(int));
+        resCoef = resize(resCoef, first.size + 1, first.size);
         result.size = first.size + 1;
-        newResult[first.size] = tmp;
-        result = BigNatural(newResult, result.size);
-        delete[] resCoef;
-        delete[] newResult;
-        return result;
+        resCoef[first.size] = tmp;
     }
     else
         result.size = first.size;
-
     result = BigNatural(resCoef, result.size);
-
     delete[] resCoef;
     return result;
 }
@@ -249,12 +234,10 @@ BigNatural SUB_NN_N(BigNatural first, BigNatural second)
     i = first.size - 1;
     while ((i > 0) && (resCoef[i] == 0))
         i--;
-    int *newResult = new int[first.size + 1];
-    memcpy(newResult, resCoef, first.size * sizeof(int));
-    result = BigNatural(newResult, i + 1);
+    resCoef = resize(resCoef, i + 1, first.size);
+    result = BigNatural(resCoef, i + 1);
 
     delete[] resCoef;
-    delete[] newResult;
     return result;
 }
 
@@ -265,7 +248,7 @@ BigNatural MUL_ND_N(BigNatural number, int factor)
     int tmp = 0;
     if (factor == 0)
         return BigNatural();
-    int *resArray = new int[number.size];
+    int *resArray = new int[number.size + 1];
     for (int j = 0; j < number.size; j++)
     {
         resArray[j] = (number.coef[j] * factor + tmp) % 10;
@@ -274,21 +257,13 @@ BigNatural MUL_ND_N(BigNatural number, int factor)
     result.size = number.size;
     if (tmp)
     {
-        int *newArray = new int[number.size + 1];
-        memcpy(newArray, resArray, number.size * sizeof(int));
-        newArray[result.size] = tmp;
+        resArray = resize(resArray, number.size + 1, number.size);
+        resArray[result.size] = tmp;
         result.size++;
-        result = BigNatural(newArray, result.size);
-        delete[] newArray;
-        delete[] resArray;
-        return result;
     }
-    else
-    {
-        result = BigNatural(resArray, result.size);
-        delete[] resArray;
-        return result;
-    }
+    result = BigNatural(resArray, result.size);
+    delete[] resArray;
+    return result;
 }
 
 //Зубцов Михаил 9375
@@ -298,7 +273,7 @@ BigNatural MUL_Nk_N(BigNatural number, int tenDegree)
     int size = number.size + tenDegree;
     if (!NZER_N_B(number))
         return BigNatural();
-    int *resArray = new int[size];
+    int *resArray = new int[size + 1];
     for (int i = 0; i < tenDegree; i++)
         resArray[i] = 0;
     for (int i = tenDegree; i < size; i++)
@@ -359,41 +334,38 @@ int DIV_NN_Dk(BigNatural first, BigNatural second, int tenDegree)
 //Кочешков Александр 9375
 /*
 DIV_NN_N
-Частное от деления большего натурального числа на меньшее или равное натуральное с остатком(делитель отличен от нуля)
-Параметры :
-1) BigNatural first - числитель.
-2) BigNatural second - знаменатель.
+Частное от деления большего натурального числа на меньшее или равное натуральное с остатком(делитель
+отличен от нуля) Параметры : 1) BigNatural first - числитель. 2) BigNatural second - знаменатель.
 Функция возвращает частное от деления BigNatural.
 */
 BigNatural DIV_NN_N(BigNatural first, BigNatural second)
 {
-
     if (COM_NN_D(first, second) == 0)
-return BigNatural(1);
+        return BigNatural(1);
 
     if (COM_NN_D(first, second) == 1)
-return BigNatural();
+        return BigNatural();
 
     if (NZER_N_B(second) == 0)
-return BigNatural();
+        return BigNatural();
 
     BigNatural result;
-int tenDegree = first.size;
+    int tenDegree = first.size;
 
-    for (;tenDegree >= 0;tenDegree--)
-{
-while ((COM_NN_D(first, MUL_Nk_N(second, tenDegree)) == 1) && (tenDegree > 0))
-{
-tenDegree--;
-}
+    for (; tenDegree >= 0; tenDegree--)
+    {
+        while ((COM_NN_D(first, MUL_Nk_N(second, tenDegree)) == 1) && (tenDegree > 0))
+        {
+            tenDegree--;
+        }
 
         int divisorNumber = DIV_NN_Dk(first, second, tenDegree);
 
         result = ADD_NN_N(MUL_Nk_N(BigNatural(divisorNumber), tenDegree), result);
 
         first = SUB_NN_N(first, MUL_Nk_N(MUL_ND_N(second, divisorNumber), tenDegree));
-}
-return result;
+    }
+    return result;
 }
 
 //Коновалова Алина 9375
@@ -451,4 +423,23 @@ BigNatural LCM_NN_N(BigNatural first, BigNatural second)
     BigNatural res;
     res = DIV_NN_N((MUL_NN_N(first, second)),(GCF_NN_N(first, second)));
     return res;
+}
+
+
+
+
+int* resize(int* arr, int size, int oldSize)
+{
+    int* nArr = new int[size];
+    int min;
+    if (size<oldSize)
+        min=size;
+    else
+        min=oldSize;
+    memcpy(nArr, arr, min * sizeof(short));
+
+    if (arr)
+        delete[] arr;
+
+    return nArr;
 }

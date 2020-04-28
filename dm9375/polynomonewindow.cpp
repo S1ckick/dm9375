@@ -11,7 +11,8 @@ PolynomOneWindow::PolynomOneWindow(QWidget *parent)
     ui->comboBox->addItem("Старший коэфф.");
     ui->comboBox->addItem("Степень");
     ui->comboBox->addItem("НОД и НОК");
-    QValidator *validator = new QRegExpValidator(QRegExp("[-+]?\\d+\\/\\d+x\\^\\d+\(([+-]\\d+\\/\\d+x\\^\\d+)+)?"));
+    QValidator *validator =
+        new QRegExpValidator(QRegExp("[-+]?\\d+\\/\\d+x\\^\\d+\(([+-]\\d+\\/\\d+x\\^\\d+)+)?"));
     ui->polynom->setValidator(validator);
 }
 

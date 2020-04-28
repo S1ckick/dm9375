@@ -219,6 +219,7 @@ std::string write_pol(Polynom poli);
 RationalFraction read_frac(std::string rational_str);
 
 std::string write_frac(RationalFraction rational);
+int* resize(int* arr, int size, int oldSize);
 
 
 #endif // HEADER_H

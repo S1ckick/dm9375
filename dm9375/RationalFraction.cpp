@@ -151,10 +151,17 @@ RationalFraction MUL_QQ_Q(RationalFraction Fraction1, RationalFraction Fraction2
 RationalFraction DIV_QQ_Q(RationalFraction Fraction1, RationalFraction Fraction2)
 {
     RationalFraction answer;
-    BigInteger TRANSNZdenominator2 = TRANS_N_Z(Fraction2.denominator); // преобразуем знаменатель второй дроби из натурального в целый
-        answer.numenator = MUL_ZZ_Z(Fraction1.numenator, TRANSNZdenominator2); // умножаем числитель первой дроби на знаменатель второй ( умножение целых)
-    BigNatural ABSZNnumerator2 = ABS_Z_N(Fraction2.numenator); // находим модуль числителя второй дроби, то есть преобразуем  его в натуральное
-        answer.denominator = MUL_NN_N(Fraction1.denominator, ABSZNnumerator2); // умножаем знаменатель первой дроби на числитель второй( умножение натуральных)
+    BigInteger TRANSNZdenominator2 = TRANS_N_Z(
+        Fraction2.denominator); // преобразуем знаменатель второй дроби из натурального в целый
+    answer.numenator =
+        MUL_ZZ_Z(Fraction1.numenator, TRANSNZdenominator2); // умножаем числитель первой дроби на
+                                                            // знаменатель второй ( умножение целых)
+    BigNatural ABSZNnumerator2 =
+        ABS_Z_N(Fraction2.numenator); // находим модуль числителя второй дроби, то есть преобразуем
+                                      // его в натуральное
+    answer.denominator = MUL_NN_N(Fraction1.denominator,
+                                  ABSZNnumerator2); // умножаем знаменатель первой дроби на
+                                                    // числитель второй( умножение натуральных)
     if (POZ_Z_D(Fraction2.numenator)==2) // если числитель второй дроби оказался положительным, то находим ответ
     {
         return answer;
