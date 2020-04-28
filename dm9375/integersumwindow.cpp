@@ -65,7 +65,7 @@ void IntegerSumWindow::on_result_clicked()
     }
     else
     {
-       ui->warning->setText("Вы не до конца заполнили поля.");
+        ui->warning->setText("Вы не до конца заполнили поля.");
     }
 }
 

@@ -24,7 +24,7 @@ class NaturalSumWindow : public QMainWindow
 
     void on_pushButton_3_clicked();
 
-private:
+  private:
     Ui::NaturalSumWindow *ui;
 };
 

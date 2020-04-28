@@ -111,7 +111,6 @@ void NaturalSumWindow::on_result_clicked()
     }
 }
 
-
 void NaturalSumWindow::on_pushButton_2_clicked()
 {
     ui->input1->setText(globalNumber.get_bignatural());

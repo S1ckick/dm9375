@@ -24,7 +24,7 @@ class IntegerSumWindow : public QMainWindow
 
     void on_pushButton_2_clicked();
 
-private:
+  private:
     Ui::IntegerSumWindow *ui;
 };
 

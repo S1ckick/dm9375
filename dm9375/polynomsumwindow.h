@@ -27,7 +27,7 @@ class PolynomSumWindow : public QMainWindow
 
     void on_pushButton_2_clicked();
 
-signals:
+  signals:
     void firstWindow();
 
   private:

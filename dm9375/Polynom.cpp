@@ -1,6 +1,6 @@
 #include "header.h"
 using namespace std;
-#include<QDebug>
+#include <QDebug>
 Polynom::Polynom()
 {
     coef = new RationalFraction[1];
@@ -187,7 +187,7 @@ RationalFraction LED_P_Q(Polynom polynom)
 }
 
 //Бухтияров Марат 9375
-int  DEG_P_N(Polynom inputValue)
+int DEG_P_N(Polynom inputValue)
 {
     //Фуункция возвращающая значение степени многочлена
     int currentCoef = 0;
@@ -195,7 +195,8 @@ int  DEG_P_N(Polynom inputValue)
     {
         //цикл ищет первый ненулевой коэффициент при наибольшей степени
         if (inputValue.coef[currentCoef].numenator.number.coef != 0)
-            return inputValue.degree - currentCoef;//Если коэффициент был найден, то возвращает значение соответствующей ему степени
+            return inputValue.degree - currentCoef; //Если коэффициент был найден, то возвращает
+                                                    //значение соответствующей ему степени
         ++currentCoef;
     }
     return -1; //вернёт это значение, если все коэффициенты равны 0,  включая свободный член
@@ -204,9 +205,12 @@ int  DEG_P_N(Polynom inputValue)
 //Заречная Юлия 9375
 RationalFraction FAC_P_Q(Polynom poli)
 {
-    BigNatural LCM = LCM_NN_N(poli.coef[0].denominator, poli.coef[1].denominator);//НОК знаменателей коэфф. при 0 и 1 степени
-    BigNatural GCF = GCF_NN_N(TRANS_Z_N(poli.coef[0].numenator), TRANS_Z_N(poli.coef[1].numenator));//НОД числителей коэфф. при 0 и 1 степени
-    for (int i = 2; i <= poli.degree; ++i)//Общий НОК и НОД
+    BigNatural LCM = LCM_NN_N(poli.coef[0].denominator,
+                              poli.coef[1].denominator); //НОК знаменателей коэфф. при 0 и 1 степени
+    BigNatural GCF =
+        GCF_NN_N(TRANS_Z_N(poli.coef[0].numenator),
+                 TRANS_Z_N(poli.coef[1].numenator)); //НОД числителей коэфф. при 0 и 1 степени
+    for (int i = 2; i <= poli.degree; ++i) //Общий НОК и НОД
     {
         LCM = LCM_NN_N(LCM, poli.coef[i].denominator);
         GCF = GCF_NN_N(GCF, TRANS_Z_N(poli.coef[i].numenator));
@@ -237,28 +241,26 @@ Polynom MUL_PP_P(Polynom poli1, Polynom poli2)
 //Данилеску Игорь 9375
 Polynom DIV_PP_P(Polynom polynom1, Polynom polynom2)
 {
-    Polynom
-        prom,
-        result;
+    Polynom prom, result;
     if (polynom1.degree < polynom2.degree)
         return Polynom();
     else
     {
-        if(DEG_P_N(polynom2)!=0)
-        while (DEG_P_N(polynom1) >= DEG_P_N(polynom2))
-        {
-            prom = Polynom();
-            prom.coef[0] = DIV_QQ_Q(LED_P_Q(polynom1), LED_P_Q(polynom2));
-            prom = MUL_Pxk_P(prom, DEG_P_N(polynom1) - DEG_P_N(polynom2));
-            result = ADD_PP_P(result, prom);
-            polynom1 = SUB_PP_P(polynom1, MUL_PP_P(prom, polynom2));
-        }
+        if (DEG_P_N(polynom2) != 0)
+            while (DEG_P_N(polynom1) >= DEG_P_N(polynom2))
+            {
+                prom = Polynom();
+                prom.coef[0] = DIV_QQ_Q(LED_P_Q(polynom1), LED_P_Q(polynom2));
+                prom = MUL_Pxk_P(prom, DEG_P_N(polynom1) - DEG_P_N(polynom2));
+                result = ADD_PP_P(result, prom);
+                polynom1 = SUB_PP_P(polynom1, MUL_PP_P(prom, polynom2));
+            }
         else
         {
             prom = Polynom();
-            prom.coef[0]=DIV_QQ_Q(LED_P_Q(polynom1), LED_P_Q(polynom2));
-            if (DEG_P_N(polynom1)!=0)
-            prom = MUL_Pxk_P(prom, DEG_P_N(polynom1) - DEG_P_N(polynom2));
+            prom.coef[0] = DIV_QQ_Q(LED_P_Q(polynom1), LED_P_Q(polynom2));
+            if (DEG_P_N(polynom1) != 0)
+                prom = MUL_Pxk_P(prom, DEG_P_N(polynom1) - DEG_P_N(polynom2));
             result = ADD_PP_P(result, prom);
             polynom1 = SUB_PP_P(polynom1, MUL_PP_P(prom, polynom2));
         }
@@ -338,13 +340,13 @@ Polynom read_pol(std::string polynom1)
     std::vector<std::pair<RationalFraction, int>> mas;
     while (i <= polynom1.length() - 1)
     {
-        if (polynom1[i] == '+' || polynom1[i] == '-'||i==0)
+        if (polynom1[i] == '+' || polynom1[i] == '-' || i == 0)
         {
             std::string numenator;
             if (polynom1[i] == '-')
                 numenator += polynom1[i];
-            if(((i==0)&&((polynom1[0]=='-'||polynom1[0]=='+')))||(i!=0))
-            i++;
+            if (((i == 0) && ((polynom1[0] == '-' || polynom1[0] == '+'))) || (i != 0))
+                i++;
 
             while (polynom1[i] != '/')
             {
@@ -382,7 +384,8 @@ Polynom read_pol(std::string polynom1)
 std::string write_pol(Polynom poli)
 {
     std::string str_pol;
-    if(poli.degree==0 && poli.coef[0].numenator.number.size==1 && poli.coef[0].numenator.number.coef[0]==0)
+    if (poli.degree == 0 && poli.coef[0].numenator.number.size == 1 &&
+        poli.coef[0].numenator.number.coef[0] == 0)
     {
         str_pol="0/1x^0";
         return str_pol;

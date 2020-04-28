@@ -23,7 +23,7 @@ class PolynomOneWindow : public QMainWindow
 
     void on_pushButton_3_clicked();
 
-signals:
+  signals:
     void firstWindow();
 
   private:
