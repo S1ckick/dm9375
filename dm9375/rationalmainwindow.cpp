@@ -11,7 +11,7 @@ RationalMainWindow::RationalMainWindow(QWidget *parent)
     ui->comboBox->addItem("Вычитание");
     ui->comboBox->addItem("Умножение");
     ui->comboBox->addItem("Деление");
-    QValidator *validator = new QRegExpValidator(QRegExp("-?\\d+\\/?\\d+"));
+    QValidator *validator = new QRegExpValidator(QRegExp("-?\\d+\\/\\d+"));
     ui->input1->setValidator(validator);
     ui->input2->setValidator(validator);
 }
