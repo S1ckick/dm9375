@@ -239,8 +239,6 @@ BigInteger DIV_ZZ_Z(BigInteger first, BigInteger second)
     {
         res.number = DIV_NN_N(ABS_Z_N(first), ABS_Z_N(second));
         res.sign = first.sign == second.sign ? plus_sign : minus_sign;
-        if (POZ_Z_D(first) == 1)
-            res.number = ADD_1N_N(res.number);
     }
     else
         res.number.size = 0;

@@ -141,7 +141,7 @@ BigNatural ADD_1N_N(BigNatural number)
             delete [] result.coef;
             result.coef = newArray;
             result.size++;
-            result.coef[result.size - 1] = 1;
+            result.coef[result.size-1] = 1;
         }
         else
             result.coef[counter]++;
