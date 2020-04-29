@@ -137,7 +137,6 @@ BigNatural ADD_1N_N(BigNatural number)
         }
         if (counter == result.size)
         {
-            result.coef = resize(result.coef, result.size + 1, result.size);
             result.size++;
             result.coef[result.size - 1] = 1;
         }
@@ -174,7 +173,6 @@ BigNatural ADD_NN_N(BigNatural first, BigNatural second)
 
     if (tmp)
     {
-        resCoef = resize(resCoef, first.size + 1, first.size);
         result.size = first.size + 1;
         resCoef[first.size] = tmp;
     }
@@ -194,13 +192,9 @@ BigNatural SUB_NN_N(BigNatural first, BigNatural second)
     int i;
     int temp;
     int carry = 0;
-
     int *a = first.coef;
-
     int *b = second.coef;
-
     int *resCoef = new int[first.size];
-
     for (int i = 0; i < second.size; i++)
     {
         temp = a[i] - b[i] + carry;
@@ -215,7 +209,6 @@ BigNatural SUB_NN_N(BigNatural first, BigNatural second)
             carry = 0;
         }
     }
-
     for (i = second.size; i < first.size; i++)
     {
         temp = a[i] + carry;
@@ -230,11 +223,9 @@ BigNatural SUB_NN_N(BigNatural first, BigNatural second)
             carry = 0;
         }
     }
-
     i = first.size - 1;
     while ((i > 0) && (resCoef[i] == 0))
         i--;
-    resCoef = resize(resCoef, i + 1, first.size);
     result = BigNatural(resCoef, i + 1);
 
     delete[] resCoef;
@@ -248,7 +239,7 @@ BigNatural MUL_ND_N(BigNatural number, int factor)
     int tmp = 0;
     if (factor == 0)
         return BigNatural();
-    int *resArray = new int[number.size + 1];
+    int *resArray = new int[number.size];
     for (int j = 0; j < number.size; j++)
     {
         resArray[j] = (number.coef[j] * factor + tmp) % 10;
@@ -257,7 +248,6 @@ BigNatural MUL_ND_N(BigNatural number, int factor)
     result.size = number.size;
     if (tmp)
     {
-        resArray = resize(resArray, number.size + 1, number.size);
         resArray[result.size] = tmp;
         result.size++;
     }
@@ -423,23 +413,4 @@ BigNatural LCM_NN_N(BigNatural first, BigNatural second)
     BigNatural res;
     res = DIV_NN_N((MUL_NN_N(first, second)),(GCF_NN_N(first, second)));
     return res;
-}
-
-
-
-
-int* resize(int* arr, int size, int oldSize)
-{
-    int* nArr = new int[size];
-    int min;
-    if (size<oldSize)
-        min=size;
-    else
-        min=oldSize;
-    memcpy(nArr, arr, min * sizeof(short));
-
-    if (arr)
-        delete[] arr;
-
-    return nArr;
 }
