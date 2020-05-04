@@ -234,19 +234,78 @@ BigInteger MUL_ZZ_Z(BigInteger firstInt, BigInteger secondInt)
 //Шагиев Даниил 9375
 BigInteger DIV_ZZ_Z(BigInteger first, BigInteger second)
 {
-    BigInteger res;
-    if (second.number.coef[0] != 0 || second.number.size != 1)
+    if ((first.number.coef[0] != 0) || (first.number.size != 1))
     {
-        res.number = DIV_NN_N(ABS_Z_N(first), ABS_Z_N(second));
-        res.sign = first.sign == second.sign ? plus_sign : minus_sign;
+        BigInteger res;
+        if ((second.number.coef[0] != 0 || second.number.size != 1))
+        {
+            res.number = DIV_NN_N(ABS_Z_N(first), ABS_Z_N(second));
+            res.sign = first.sign == second.sign ? plus_sign : minus_sign;
+        }
+        else
+            res.number.size = 0;
+        return res;
     }
     else
-        res.number.size = 0;
-    return res;
+    {
+        BigInteger res;
+        return res;
+    }
 }
 
 //Шагиев Даниил 9375
 BigInteger MOD_ZZ_Z(BigInteger first, BigInteger second)
 {
-    return SUB_ZZ_Z(first, MUL_ZZ_Z(second, DIV_ZZ_Z(first, second)));
+    if (((first.number.coef[0] == 0) && (first.number.size == 1)) ||
+        ((second.number.coef[0] == 0) && (second.number.size == 1)))
+    {
+        BigInteger res;
+        return res;
+    }
+    else
+    {
+        // first is positive
+        if (((POZ_Z_D(first) == 2) && (POZ_Z_D(second) == 1)) ||
+            ((POZ_Z_D(first) == 2) && (POZ_Z_D(second) == 2)))
+        {
+            first.sign = plus_sign;
+            second.sign = plus_sign;
+            return SUB_ZZ_Z(first, MUL_ZZ_Z(second, DIV_ZZ_Z(first, second)));
+        }
+        else if ((POZ_Z_D(first) == 1) && (POZ_Z_D(second) == 2))
+        {
+            // first is negative and second is positive
+            first.sign = plus_sign;
+            BigInteger res = DIV_ZZ_Z(first, second);
+            res.sign = minus_sign;
+            first.sign = minus_sign;
+            BigInteger check = MUL_ZZ_Z(second, res);
+            if (COM_NN_D(check.number, first.number) == 0 && check.sign == first.sign)
+            {
+                BigInteger res;
+                return res;
+            }
+            res = SUB_ZZ_Z(res, BigInteger(1));
+            res = SUB_ZZ_Z(first, MUL_ZZ_Z(second, res));
+            return res;
+        }
+        else
+        {
+            // first and second are negative
+            first.sign = plus_sign;
+            second.sign = plus_sign;
+            BigInteger res = DIV_ZZ_Z(first, second);
+            first.sign = minus_sign;
+            second.sign = minus_sign;
+            BigInteger check = MUL_ZZ_Z(second, res);
+            if (COM_NN_D(check.number, first.number) == 0 && check.sign == first.sign)
+            {
+                BigInteger res;
+                return res;
+            }
+            res = ADD_ZZ_Z(res, BigInteger(1));
+            res = SUB_ZZ_Z(first, MUL_ZZ_Z(second, res));
+            return res;
+        }
+    }
 }

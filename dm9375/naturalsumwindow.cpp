@@ -39,7 +39,6 @@ void NaturalSumWindow::on_result_clicked()
 {
     if ((ui->input1->hasAcceptableInput()) && (ui->input2->hasAcceptableInput()))
     {
-        ui->warning->clear();
         std::string natural1 = ui->input1->text().toStdString();
         BigNatural BigN1(natural1);
         if ((ui->comboBox->currentText() == "Сложение") ||
@@ -118,6 +117,13 @@ void NaturalSumWindow::on_pushButton_2_clicked()
 
 void NaturalSumWindow::on_pushButton_3_clicked()
 {
-    if(!(ui->comboBox->currentText()=="10^k"))
+    if (!(ui->comboBox->currentText() == "10^k"))
         ui->input2->setText(globalNumber.get_bignatural());
+}
+
+void NaturalSumWindow::on_comboBox_activated(const QString &arg1)
+{
+    ui->warning->clear();
+    if(arg1=="10^k")
+        ui->warning->setText("Пожалуйста, введите во второй строке не длинное число.");
 }
