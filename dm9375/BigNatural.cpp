@@ -136,12 +136,12 @@ BigNatural ADD_1N_N(BigNatural number)
         }
         if (counter == result.size)
         {
-            int * newArray = new int [result.size+1];
-            std::copy(result.coef,result.coef+result.size,newArray);
-            delete [] result.coef;
+            int *newArray = new int[result.size + 1];
+            std::copy(result.coef, result.coef + result.size, newArray);
+            delete[] result.coef;
             result.coef = newArray;
             result.size++;
-            result.coef[result.size-1] = 1;
+            result.coef[result.size - 1] = 1;
         }
         else
             result.coef[counter]++;
@@ -174,11 +174,11 @@ BigNatural ADD_NN_N(BigNatural first, BigNatural second)
         tmp = (first.coef[i] + tmp) / 10;
     }
 
-    if (tmp!=0)
+    if (tmp != 0)
     {
-        int * newArray = new int [first.size+1];
-        std::copy(resCoef,resCoef+first.size,newArray);
-        delete [] resCoef;
+        int *newArray = new int[first.size + 1];
+        std::copy(resCoef, resCoef + first.size, newArray);
+        delete[] resCoef;
         resCoef = newArray;
         result.size = first.size + 1;
         resCoef[first.size] = tmp;
@@ -233,9 +233,9 @@ BigNatural SUB_NN_N(BigNatural first, BigNatural second)
     i = first.size - 1;
     while ((i > 0) && (resCoef[i] == 0))
         i--;
-    int * newArray = new int [i+1];
-    std::copy(resCoef,resCoef+i+1,newArray);
-    delete [] resCoef;
+    int *newArray = new int[i + 1];
+    std::copy(resCoef, resCoef + i + 1, newArray);
+    delete[] resCoef;
     resCoef = newArray;
     result = BigNatural(resCoef, i + 1);
     delete[] resCoef;
@@ -256,11 +256,11 @@ BigNatural MUL_ND_N(BigNatural number, int factor)
         tmp = (number.coef[j] * factor + tmp) / 10;
     }
     result.size = number.size;
-    if (tmp!=0)
+    if (tmp != 0)
     {
-        int * newArray = new int [number.size+1];
-        std::copy(resArray,resArray+number.size,newArray);
-        delete [] resArray;
+        int *newArray = new int[number.size + 1];
+        std::copy(resArray, resArray + number.size, newArray);
+        delete[] resArray;
         resArray = newArray;
         resArray[result.size] = tmp;
         result.size++;

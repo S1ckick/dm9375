@@ -37,9 +37,9 @@ void PolynomSumWindow::on_back_clicked()
 }
 void PolynomSumWindow::on_result_clicked()
 {
+    ui->warning->clear();
     if ((ui->input1->hasAcceptableInput()) && (ui->input2->hasAcceptableInput()))
     {
-        ui->warning->clear();
         if ((ui->comboBox->currentText() == "Сложение") ||
             (ui->comboBox->currentText() == "Вычитание") ||
             (ui->comboBox->currentText() == "Умножение") ||
@@ -118,11 +118,13 @@ void PolynomSumWindow::on_comboBox_activated(const QString &arg1)
     }
     else if (arg1 == "Умножение на число")
     {
-        QValidator *validator2 = new QRegExpValidator(QRegExp("-?\\d+\\/?\\d+"));
+        ui->warning->setText("Пожалуйста, введите во второй строке число в виде дроби.");
+        QValidator *validator2 = new QRegExpValidator(QRegExp("-?\\d+\\/\\d+"));
         ui->input2->setValidator(validator2);
     }
     else if (arg1 == "x^k")
     {
+        ui->warning->setText("Пожалуйста, введите во второй строке не длинное число.");
         QValidator *validator2 = new QRegExpValidator(QRegExp("\\d+"));
         ui->input2->setValidator(validator2);
     }
