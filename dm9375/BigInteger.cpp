@@ -243,7 +243,7 @@ BigInteger DIV_ZZ_Z(BigInteger first, BigInteger second)
         {
             res.number = DIV_NN_N(ABS_Z_N(first), ABS_Z_N(second));
             res.sign = first.sign == second.sign ? plus_sign : minus_sign;
-            if (res.sign==minus_sign)//если результат имеет знак минус, то отнимем единицу.
+            if (first.sign==minus_sign && POZ_Z_D(MOD_ZZ_Z(first,second))!=0)//если первое число имеет знак минус и остаток не ноль, то отнимем единицу.
             {
                 BigInteger one(1);
                 res=SUB_ZZ_Z(res,one);
