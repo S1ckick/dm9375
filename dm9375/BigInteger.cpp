@@ -234,19 +234,26 @@ BigInteger MUL_ZZ_Z(BigInteger firstInt, BigInteger secondInt)
 //Шагиев Даниил 9375
 BigInteger DIV_ZZ_Z(BigInteger first, BigInteger second)
 {
+    //если первое число не нуль
     if ((first.number.coef[0] != 0) || (first.number.size != 1))
     {
         BigInteger res;
+        //если второе число не нуль
         if ((second.number.coef[0] != 0 || second.number.size != 1))
         {
             res.number = DIV_NN_N(ABS_Z_N(first), ABS_Z_N(second));
             res.sign = first.sign == second.sign ? plus_sign : minus_sign;
+            if (res.sign==minus_sign)//если результат имеет знак минус, то отнимем единицу.
+            {
+                BigInteger one(1);
+                res=SUB_ZZ_Z(res,one);
+            }
         }
-        else
+        else//если второе число нуль
             res.number.size = 0;
         return res;
     }
-    else
+    else//если нуль
     {
         BigInteger res;
         return res;
